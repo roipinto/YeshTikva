@@ -11,7 +11,6 @@ const toolbar = (props) => (
     <nav class="navbar navbar-expand-lg navbar-light" >
         
             <Link to='/HomePage'>
-                <div>דף הבית</div>
                 <img src={logo} id="logo" alt=""></img>
             </Link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +23,9 @@ const toolbar = (props) => (
                     </li>
                     <li class="nav-item">
                         <a href="#home" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLRForm">התחברות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/HomePage" class="btn btn-outline-primary">דף הבית</a>
                     </li>
                 </ul>
             </div>

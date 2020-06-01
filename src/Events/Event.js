@@ -16,6 +16,7 @@ const event = (props) => (
            
                  
            <h6><b> {props.title}</b></h6>
+           <p>{props.location}</p>
             <p>{props.body}</p>
             <button onClick={props.clicked} type="button" class="btn btn-danger btn-sm">מחק</button>         
       </div>

@@ -47,6 +47,7 @@ class Events extends Component {
                         <PreviewEvent
                             key={event.id}
                             title={event.title}
+                            location={event.location}
                             body={event.body}
                         />
                     ))}

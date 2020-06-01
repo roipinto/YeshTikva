@@ -18,7 +18,7 @@ class Home extends Component {
 
         <MyTitle title="!הצטרף לעמותת יש תקווה" />
 
-        <div class="jumbotron-fluid " id="ttt">
+        <div class="jumbotron-fluid " id="sentence">
           <div class="container">
             <p class="lead">יש תקווה מטרתה לסייע בשמירה על חולים בלה בלה בלה</p>
 
@@ -26,6 +26,10 @@ class Home extends Component {
             <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
             <a href="/Information" class="btn btn-info">מידע על העמותה</a>
             <a href="Join" class="btn btn-info btn-light joinbut">הרשם כמתנדב חדש</a>
+
+            
+
+
           </div>
         </div>
 

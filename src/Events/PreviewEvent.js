@@ -15,6 +15,7 @@ const event = (props) => (
               <h6><b> {props.id}</b></h6>
                  
            <h6><b> {props.title}</b></h6>
+           <p>{props.location}</p> 
             <p>{props.body}</p>         
       </div>
       </div>

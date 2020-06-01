@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import { Link } from 'react-router-dom';
 import './MenuPage.css';
+import MyTitle from '../Title';
 
 
 
@@ -12,117 +11,31 @@ class MenuPage extends Component {
     return (
 
       <div class="MenuPage">
-
-        <div class="jumbotron jumbotron-fluid py-1">
-          <div class="container">
-            <div class="display-4">לוח בקרה למשתמש</div>
-          </div>
-        </div>
-
-
+        <MyTitle title="לוח בקרה למשתמש" />
 
         <section id="boxes" class="py-3">
-          <div class="row justify-content-md-center ">
-
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="/ShiftDashboard" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3> לוח משמרות   </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="/EditEventsPage" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3> עדכן עמוד אירועים  </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <a href="/ShiftDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח משמרות</a>
+          <a href="/EditEventsPage" class="btn btn-outline-primary btn-ctrl-panel">עדכן עמוד אירועים</a>
         </section>
 
         <section id="boxes" class="py-3">
-          <div class="row justify-content-md-center ">
-
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="PatientDashboard" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3> לוח מטופלים </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="/CoordinatorDashboard" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3> לוח רכזים </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
+        <a href="PatientDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מטופלים</a>
+        <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
         </section>
+
+
         <section id="boxes" class="py-3">
-          <div class="row justify-content-md-center ">
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="VolunteerRequestDashboard" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3>  בקשות התנדבות </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="VolunteerDashboard" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3>  לוח מתנדבים </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
+        <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel">בקשות התנדבות</a>
+        <a href="VolunteerDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מתנדבים</a>
         </section>
 
 
 
         <section id="boxes" class="py-3">
-          <div class="row justify-content-md-center ">
-            <div class="col-md-3 py-2">
-              <div class="card text-center text-black-50 bg-light ">
-                <div class="card-body">
-                  <a href="" class="btn btn-outlone-secondary text-secondary text-black-50">
-                    <h3>  הוסף או הסר משתמש   </h3>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
+        <a href="" class="btn btn-outline-primary btn-ctrl-panel">הוסף או הסר משתמש</a>
+        <a href="" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>
+        </section>
 
 
 

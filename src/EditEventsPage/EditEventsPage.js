@@ -9,7 +9,6 @@ import Event from '../Events/Event';
 import Events from '../Events/Events';
 
 
-
 class EditEventsPage extends Component {
   constructor(props) {
     super(props);
@@ -23,9 +22,6 @@ class EditEventsPage extends Component {
     selectedEventId: null
 
   }
-
-
-
 
   componentDidMount() {
     axios.get('/events.json')
@@ -52,8 +48,6 @@ class EditEventsPage extends Component {
   }
 
   deleteEventId = (id) => {
-    // alert("אירוע נמחק");
-    // this.setState({selectedEventId: id});
     const r = window.confirm("האם אתה בטוח?"); if (r == true) {
 
       axios.delete('/events/' + id + '.json')
@@ -64,17 +58,7 @@ class EditEventsPage extends Component {
           window.location.reload();
         });
 
-
-
     }
-
-    //.then(response => {
-    //console.log(response);
-
-
-    // });
-
-    //alert('/events.json/'+ id);
   }
 
   handleSubmit(e) {
@@ -82,6 +66,7 @@ class EditEventsPage extends Component {
     const event = {
       event: this.state.event,
       title: this.input.value,
+      location: this.input3.value,
       body: this.input2.value,
     }
     axios.post('/events.json', event).then(function (response) {
@@ -92,10 +77,7 @@ class EditEventsPage extends Component {
     e.preventDefault();
   }
 
-
   render() {
-
-
 
     return (
       <div>
@@ -107,39 +89,32 @@ class EditEventsPage extends Component {
         </div>
 
         <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
-
           <div class="col-lg-4 ">
             <div class="Card bg-white text-center card-form ">
               <div class="card-body ">
-
-
                 <form>
                   <div class="form-group">
                     <input type="text" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="כותרת "></input>
                   </div>
                   <div class="form-group">
+                    <input type="text" class="form-control form-control-lg text-right" ref={(input3) => this.input3 = input3} placeholder="מיקום"></input>
+                  </div>
+                  <div class="form-group">
                     <input type="text" class="form-control form-control-lg text-right" ref={(input2) => this.input2 = input2} placeholder="מידע"></input>
                   </div>
-
                   <input type="submit" value=" הוסף אירוע חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                 </form>
               </div>
             </div>
           </div>
-
         </form>
-
-
-
-
-
 
         {this.state.events.map(event => (
           <Event
             key={event.id}
             title={event.title}
+            location={event.location}
             body={event.body}
-
             clicked={() => this.deleteEventId(event.id)}
           />
         ))}

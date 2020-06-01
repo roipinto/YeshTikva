@@ -6,12 +6,11 @@ import './Toolbar.css';
 
 const toolbar = (props) => (
     <div>
-        
-    
-    <nav class="navbar navbar-expand-lg navbar-light" >
-        
+
+
+        <nav class="navbar navbar-expand-lg navbar-light" >
+
             <Link to='/HomePage'>
-                <div>דף הבית</div>
                 <img src={logo} id="logo" alt=""></img>
             </Link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,16 +19,19 @@ const toolbar = (props) => (
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <div class="btn btn-outline-primary disabled" data-toggle="modal" >ברוך הבא</div>
+                    </li>
+                    <li class="nav-item">
                         <a href="/MenuPage" class="btn btn-outline-primary">לוח בקרה למשתמש</a>
                     </li>
                     <li class="nav-item">
-                        <div class="btn btn-outline-primary" data-toggle="modal" >ברוך הבא</div>
+                        <a href="/HomePage" class="btn btn-outline-primary">דף הבית</a>
                     </li>
                 </ul>
             </div>
 
-    </nav>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="/MenuPage" class="btn btn-outline-primary">לוח בקרה למשתמש</a>
@@ -74,7 +76,7 @@ const toolbar = (props) => (
             </div>
         </div>
 
-        
+
 
     </div>
 
