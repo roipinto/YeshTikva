@@ -1,14 +1,12 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
-import Coordinator from './Coordinator';
-import ToolbarConnect from '../Toolbar/ToolbarConnect';
+import Shifts from './Shifts';
 
-class CoordinatorDashboard extends Component {
-
+class ShiftDashboard extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +15,7 @@ class CoordinatorDashboard extends Component {
     }
 
     state = {
-        coordinators: [],
+        shifts: [],
         loading: true,
         selectedVolunteerId: null,
         filterText: ""
@@ -27,7 +25,7 @@ class CoordinatorDashboard extends Component {
 
 
     componentDidMount() {
-        axios.get('/coordinators.json')
+        axios.get('/shifts.json')
             .then(res => {
                 const fetchedVolunteers = [];
                 for (let key in res.data) {
@@ -36,7 +34,7 @@ class CoordinatorDashboard extends Component {
                         id: key
                     });
                 }
-                this.setState({ loading: false, coordinators: fetchedVolunteers });
+                this.setState({ loading: false, shifts: fetchedVolunteers });
             })
             .catch(err => {
                 this.setState({ loading: false });
@@ -52,16 +50,17 @@ class CoordinatorDashboard extends Component {
 
 
     handleSubmit(e) {
-        alert(' נוצר רכז חדש ');
-        const coordinator = {
-            coordinators: this.state.coordinator,
-            name: this.input.value,
-            phone: this.input2.value,
-            email: this.input3.value,
-            notes: this.input4.value
+        alert(' משמרת חדשב נוצרה ');
+        const shift = {
+            shifts: this.state.shift,
+            date: this.input.value,
+            time: this.input2.value,
+            patient: this.input3.value,
+            hospital: this.input5.value,
+            volunteer: this.input4.value
 
         }
-        axios.post('/coordinators.json', coordinator)
+        axios.post('/shifts.json', shift)
 
 
         e.preventDefault();
@@ -76,10 +75,9 @@ class CoordinatorDashboard extends Component {
 
                 <div class="jumbotron jumbotron-fluid py-1">
                     <div class="container">
-                        <div class="display-4">לוח רכזים</div>
+                        <div class="display-4">לוח משמרות</div>
                     </div>
                 </div>
-
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
@@ -91,20 +89,23 @@ class CoordinatorDashboard extends Component {
 
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
+                                        <input type="date" class="form-control form-control-lg text-right" ref={(input) => this.input = input}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="טלפון" ref={(input2) => this.input2 = input2}></input>
+                                        <input type="time" class="form-control form-control-lg text-right" placeholder="שם מלא" required ref={(input2) => this.input2 = input2}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-lg text-right" placeholder="example@google.com " ref={(input3) => this.input3 = input3}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל " required ref={(input3) => this.input3 = input3}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מתנדב " ref={(input4) => this.input4 = input4}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="בית חולים " required ref={(input5) => this.input5 = input5}></input>
                                     </div>
 
 
-                                    <input type="submit" value=" הוסף רכז חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
+                                    <input type="submit" value=" הוסף משמרת חדשה " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                                 </form>
                             </div>
                         </div>
@@ -113,7 +114,7 @@ class CoordinatorDashboard extends Component {
                 </form>
                 <div>
 
-                    <Coordinator />
+                    <Shifts />
 
                 </div>
 
@@ -123,6 +124,6 @@ class CoordinatorDashboard extends Component {
 
 }
 
-export default CoordinatorDashboard;
+export default ShiftDashboard;
 
 

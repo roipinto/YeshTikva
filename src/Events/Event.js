@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import {Link} from 'react-router-dom';
-import axios from '../EditEventsPage/axios-events';
-import EditEventsPage from '../EditEventsPage/axios-events';
-
 
 
 const event = (props) => (
@@ -22,7 +17,7 @@ const event = (props) => (
                  
            <h6><b> {props.title}</b></h6>
             <p>{props.body}</p>
-            <button onClick={props.clicked} type="button" class="btn btn-danger">מחק  </button>         
+            <button onClick={props.clicked} type="button" class="btn btn-danger btn-sm">מחק</button>         
       </div>
       </div>
       </div>

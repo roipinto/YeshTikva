@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
-import VolunteerRequest from '../VolunteerRequest/VolunteerRequest';
-import emailjs from 'emailjs-com';
+import Volunteer from './Volunteer';
 
-class VolunteerRequestDashboard extends Component {
+class VolunteerDashboard extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +15,7 @@ class VolunteerRequestDashboard extends Component {
     }
 
     state = {
-        volunteerRequests: [],
+        volunteers: [],
         loading: true,
         selectedVolunteerId: null,
         filterText: ""
@@ -26,7 +25,7 @@ class VolunteerRequestDashboard extends Component {
 
 
     componentDidMount() {
-        axios.get('/volunteerRequests.json')
+        axios.get('/volunteers.json')
             .then(res => {
                 const fetchedVolunteers = [];
                 for (let key in res.data) {
@@ -35,20 +34,25 @@ class VolunteerRequestDashboard extends Component {
                         id: key
                     });
                 }
-                this.setState({ loading: false, volunteerRequests: fetchedVolunteers });
+                this.setState({ loading: false, volunteers: fetchedVolunteers });
             })
             .catch(err => {
                 this.setState({ loading: false });
             })
+
     }
 
 
 
 
+
+
+
+
     handleSubmit(e) {
-        alert('נוצרה בקשה חדשה');
-        const volunteerRequest = {
-            volunteerRequests: this.state.volunteerRequest,
+        alert(' נוצר מתנדב חדש ');
+        const volunteer = {
+            volunteers: this.state.volunteer,
             name: this.input.value,
             zehot: this.input2.value,
             email: this.input3.value,
@@ -70,23 +74,16 @@ class VolunteerRequestDashboard extends Component {
             experience: this.input17.value,
             notes: this.input18.value,
             update: this.input19.value,
-
-
+            howSubmitted: this.input20.value
 
 
 
 
         }
-        axios.post('/volunteerRequests.json', volunteerRequest)
+        axios.post('/volunteers.json', volunteer)
 
 
         e.preventDefault();
-
-        emailjs.send('default_service', 'zisi', { from_name: "", to_name: "", subject: "hello", message_html: "hello hello" }, 'user_FDonzgo2Fb4KPMm3Ko062')
-            .then(function (response) {
-                console.log("");
-            });
-
     }
 
 
@@ -98,12 +95,9 @@ class VolunteerRequestDashboard extends Component {
 
                 <div class="jumbotron jumbotron-fluid py-1">
                     <div class="container">
-                        <div class="display-4">בקשת התנדבות</div>
+                        <div class="display-4">לוח מתנדבים</div>
                     </div>
                 </div>
-
-
-                <p></p>
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
@@ -125,9 +119,11 @@ class VolunteerRequestDashboard extends Component {
                                         <input type="text" class="form-control form-control-lg text-right" placeholder="הערות" ref={(input18) => this.input18 = input18}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך תרצה לקבל עדכונים מאיתנו" ref={(input19) => this.input19 = input19}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך ירצה לקבל עדכונים מאיתנו" ref={(input19) => this.input19 = input19}></input>
                                     </div>
-
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מי טיפל בבקשה" ref={(input20) => this.input20 = input20}></input>
+                                    </div>
 
                                 </form>
                             </div>
@@ -147,16 +143,16 @@ class VolunteerRequestDashboard extends Component {
                                         <input type="number" class="form-control form-control-lg text-right" required placeholder="גיל" ref={(input9) => this.input9 = input9}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="רקע קצר עליך" ref={(input10) => this.input10 = input10}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="רקע על המתנדב" ref={(input10) => this.input10 = input10}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="האם יש מחלה או בעיה רפואית" ref={(input11) => this.input11 = input11}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם התחסנת בכל החיסונים בילדות" ref={(input12) => this.input12 = input12}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם התחסן בכל החיסונים בילדות" ref={(input12) => this.input12 = input12}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך הגעת אלינו" ref={(input13) => this.input13 = input13}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך הגיע אלינו" ref={(input13) => this.input13 = input13}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="אילו איזורים רלוונטים להתנדבות" ref={(input14) => this.input14 = input14}></input>
@@ -202,10 +198,7 @@ class VolunteerRequestDashboard extends Component {
                         </div>
                     </div>
 
-                    <div>
 
-                        <input onClick={this.handleSubmit} type="submit" value=" הוסף מתנדב חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
-                    </div>
 
 
 
@@ -218,10 +211,17 @@ class VolunteerRequestDashboard extends Component {
 
                 </form>
 
-
                 <div>
 
-                    <h1></h1>
+                    <input onClick={this.handleSubmit} type="submit" value=" הוסף מתנדב חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
+                </div>
+
+
+                <div>
+                    <h1> </h1>
+
+                    <Volunteer />
+
                 </div>
 
             </div>
@@ -230,6 +230,6 @@ class VolunteerRequestDashboard extends Component {
 
 }
 
-export default VolunteerRequestDashboard;
+export default VolunteerDashboard;
 
 

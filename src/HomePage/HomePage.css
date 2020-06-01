@@ -1,0 +1,41 @@
+.Home{
+    font-family: 'Secular One', sans-serif;
+}
+
+.lead{
+    font-size: 1.5em;
+    color: #1c308a;
+}
+
+.btn-info{
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.joinbut{
+    color:#000000;
+    background-color: #d4ac28;
+}
+
+#cont{
+    background-color: hsl(342, 55%, 60%);
+    padding: 10px ;
+}
+
+.contbut{
+    background-color: hsl(0, 0%, 0%);
+    color: seashell;
+    margin-top: 2px;
+}
+
+#images{
+    margin-top: 0px;
+
+}
+
+#ttt{
+    background-color: #a5bdd8;
+    margin-top: 0px;
+    padding: 20px ;
+}
