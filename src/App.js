@@ -18,7 +18,9 @@ import Statistics from './Statistics/Statistics';
 import ToolbarNotConnect from './Toolbar/ToolbarNotConnect';
 import ToolbarConnect from './Toolbar/ToolbarConnect';
 import InformationForVolunteer from './InformationForVolunteer/InformationForVolunteer';
+import ContectUs from './ContectUs/ContectUs';
 import './App.css';
+import { Redirect } from 'react-router-dom'
 
 const style = {
   position: "relative",
@@ -43,10 +45,13 @@ class App extends Component {
         <div className="App">
 
           <ToolbarConnect />
+          <ToolbarNotConnect />
 
 
+          <Route exact path="/"><Redirect to="/HomePage" /> : <HomePage /></Route>
+          <Route path="/HomePage" component={HomePage} />
           <Switch>
-            <Route path="/HomePage" component={HomePage} />
+            <Route path=" " component={HomePage} />
             <Route path="/Information" component={Information} />
             <Route path="/EditEventsPage" component={EditEventsPage} />
             <Route path="/ShiftDashboard" component={ShiftDashboard} />
@@ -59,7 +64,7 @@ class App extends Component {
             <Route path="/Events" component={Events} />
             <Route path="/MenuPage" component={MenuPage} />
             <Route path="/InformationForVolunteer" component={InformationForVolunteer} />
-
+            <Route path="/ContectUs" component={ContectUs} />
           </Switch>
 
         </div>

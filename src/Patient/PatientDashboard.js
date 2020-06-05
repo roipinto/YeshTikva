@@ -5,12 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import Patient from './Patient';
+import MyTitle from '../Title';
 
 class PatientDashboard extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-
 
     }
 
@@ -92,13 +92,7 @@ class PatientDashboard extends Component {
     render() {
         return (
             <div>
-
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">לוח מטופלים</div>
-                    </div>
-                </div>
-
+                <MyTitle title="לוח מטופלים" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 

@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import VolunteerRequest from './VolunteerRequest';
+import MyTitle from '../Title';
 
 class VolunteerRequestDashboard extends Component {
     constructor(props) {
@@ -90,15 +91,7 @@ class VolunteerRequestDashboard extends Component {
         return (
             <div>
 
-
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">לוח בקשות להתנדבות</div>
-                    </div>
-                </div>
-
-
-                <p></p>
+                <MyTitle title="לוח בקשות להתנדבות" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 

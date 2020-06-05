@@ -12,10 +12,21 @@ class Home extends Component {
   render() {
     return (
 
-
       <div>
 
-        <MyTitle title="מידע למתנדב" />
+        <MyTitle title="מידע למתנדב" /> <p></p> <p></p>
+
+        <div class="row justify-content-md-center">
+          <div class="col-md-7 py-2">
+            <div class="card text-center text-black-50  bg-light">
+              <div class="card-body ">
+                <p></p>
+                <p class="text muted text-right">מצורפים בזו מספר קבצי</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
         
       </div>

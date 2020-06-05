@@ -23,7 +23,6 @@ const event = (props) => (
       </div>
       </section>
    
-   
 );
 
 export default event;

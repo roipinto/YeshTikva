@@ -56,7 +56,6 @@ class Events extends Component {
 
 
 
-
             </div>
         );
     }

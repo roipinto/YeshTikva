@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import Coordinator from './Coordinator';
 import ToolbarConnect from '../Toolbar/ToolbarConnect';
+import MyTitle from '../Title';
 
 class CoordinatorDashboard extends Component {
-
+    
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -74,12 +75,7 @@ class CoordinatorDashboard extends Component {
         return (
             <div>
 
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">לוח רכזים</div>
-                    </div>
-                </div>
-
+                <MyTitle title="לוח רכזים" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 

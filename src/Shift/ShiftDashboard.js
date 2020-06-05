@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import Shifts from './Shifts';
+import MyTitle from '../Title';
 
 class ShiftDashboard extends Component {
     constructor(props) {
@@ -72,12 +73,7 @@ class ShiftDashboard extends Component {
     render() {
         return (
             <div>
-
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">לוח משמרות</div>
-                    </div>
-                </div>
+                <MyTitle title="לוח משמרות" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
@@ -85,7 +81,6 @@ class ShiftDashboard extends Component {
                     <div class="col-lg-4">
                         <div class="Card bg-white text-center card-form">
                             <div class="card-body">
-
 
                                 <form>
                                     <div class="form-group">

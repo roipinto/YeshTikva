@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './MenuPage.css';
 import MyTitle from '../Title';
-
-
+import './MenuPage.css';
 
 
 
@@ -20,13 +18,13 @@ class MenuPage extends Component {
 
         <section id="boxes" class="py-3">
         <a href="PatientDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מטופלים</a>
-        <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
+        <a href="VolunteerDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מתנדבים</a>
         </section>
 
 
         <section id="boxes" class="py-3">
-        <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel">בקשות התנדבות</a>
-        <a href="VolunteerDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מתנדבים</a>
+        <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
+        <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel btttt">בקשות התנדבות</a>
         </section>
 
 

@@ -2,7 +2,6 @@ import firebase from 'firebase'
 //import firebase from "@firebase/database";
 
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyDB38QEBNm9OJn8ZKRRfJ6DcCC1k_-cMvg",
     authDomain: "yesh-tikva.firebaseapp.com",

@@ -199,7 +199,6 @@ class Patient extends Component {
 
 
 
-
                 ></MaterialTable>
 
             </div>

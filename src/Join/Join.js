@@ -107,25 +107,31 @@ class VolunteerRequestDashboard extends Component {
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
-
                     <div class="col-lg-4">
                         <div class="Card bg-white text-center card-form">
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="תחומי התנדבות" ref={(input15) => this.input15 = input15}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שעות מעודפות להתנדבות" ref={(input16) => this.input16 = input16}></input>
+                                        <input type="number" class="form-control form-control-lg text-right" required placeholder="תעודת זהות" ref={(input2) => this.input2 = input2}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם יש ניסיון התנדבות בבית חולים" ref={(input17) => this.input17 = input17}></input>
+                                        <input type="email" class="form-control form-control-lg text-right" placeholder="example@gmail.com" ref={(input3) => this.input3 = input3}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="הערות" ref={(input18) => this.input18 = input18}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מגדר" ref={(input4) => this.input4 = input4}></input>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מגזר" ref={(input5) => this.input5 = input5}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך תרצה לקבל עדכונים מאיתנו" ref={(input19) => this.input19 = input19}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מצב משפחתי" ref={(input6) => this.input6 = input6}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="כתובת מגורים" ref={(input7) => this.input7 = input7}></input>
                                     </div>
 
 
@@ -133,8 +139,6 @@ class VolunteerRequestDashboard extends Component {
                             </div>
                         </div>
                     </div>
-
-
 
                     <div class="col-lg-4">
                         <div class="Card bg-white text-center card-form">
@@ -166,36 +170,26 @@ class VolunteerRequestDashboard extends Component {
                         </div>
                     </div>
 
-
-
-
-
                     <div class="col-lg-4">
                         <div class="Card bg-white text-center card-form">
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="תחומי התנדבות" ref={(input15) => this.input15 = input15}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control form-control-lg text-right" required placeholder="תעודת זהות" ref={(input2) => this.input2 = input2}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שעות מעודפות להתנדבות" ref={(input16) => this.input16 = input16}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-lg text-right" placeholder="example@gmail.com" ref={(input3) => this.input3 = input3}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם יש ניסיון התנדבות בבית חולים" ref={(input17) => this.input17 = input17}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מגדר" ref={(input4) => this.input4 = input4}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="הערות" ref={(input18) => this.input18 = input18}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איך תרצה לקבל עדכונים מאיתנו" ref={(input19) => this.input19 = input19}></input>
                                     </div>
 
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מגזר" ref={(input5) => this.input5 = input5}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מצב משפחתי" ref={(input6) => this.input6 = input6}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="כתובת מגורים" ref={(input7) => this.input7 = input7}></input>
-                                    </div>
 
                                 </form>
                             </div>
@@ -203,24 +197,14 @@ class VolunteerRequestDashboard extends Component {
                     </div>
 
                     <div>
-
                         <input onClick={this.handleSubmit} type="submit" value=" הוסף מתנדב חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                     </div>
-
-
-
-
-
-
-
-
 
 
                 </form>
 
 
                 <div>
-
                     <h1></h1>
                 </div>
 

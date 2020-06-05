@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import styled from 'styled-components';
 import axios from './axios-events';
 import Event from '../Events/Event';
 import Events from '../Events/Events';
-
+import MyTitle from '../Title';
 
 class EditEventsPage extends Component {
   constructor(props) {
@@ -77,16 +72,13 @@ class EditEventsPage extends Component {
     e.preventDefault();
   }
 
+  
   render() {
 
     return (
       <div>
 
-        <div class="jumbotron jumbotron-fluid py-1">
-          <div class="container">
-            <div class="display-4">הוסף אירוע</div>
-          </div>
-        </div>
+        <MyTitle title="הוסף אירוע" />
 
         <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
           <div class="col-lg-4 ">

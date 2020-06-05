@@ -31,16 +31,12 @@ class Coordinator extends Component {
                     phone: coordinators[coordinator].phone,
                     email: coordinators[coordinator].email,
                     notes: coordinators[coordinator].notes
-                  
                 });
-
             }
             this.setState({
                 coordinators: newState
             });
-
         }
-
         );
     }
 
@@ -60,21 +56,11 @@ class Coordinator extends Component {
 
 
     render() {
-
-
-
-
-
-
         return (
             <div>
 
-
-
                 <MaterialTable
                     title="  רכזים"
-                   
-
                     data={this.state.coordinators}
 
                     columns={[
@@ -146,5 +132,6 @@ class Coordinator extends Component {
         );
     }
 }
+
 
 export default Coordinator;

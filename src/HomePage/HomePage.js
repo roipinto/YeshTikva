@@ -8,9 +8,6 @@ import MyTitle from '../Title';
 
 
 
-
-
-
 class Home extends Component {
   render() {
     return (
@@ -18,18 +15,16 @@ class Home extends Component {
 
         <MyTitle title="!הצטרף לעמותת יש תקווה" />
 
+
         <div class="jumbotron-fluid " id="sentence">
           <div class="container">
-            <p class="lead">יש תקווה מטרתה לסייע בשמירה על חולים בלה בלה בלה</p>
+            <p class="lead">עמותת 'יש תקווה' הוקמה על מנת להעניק ליווי וסיוע לחולים, אשר נאלצים להתאשפז לתקופות ארוכות או להגיע לבדיקות וטיפולים בבתי חולים באופן תדיר.</p>
 
-            <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
-            <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
-            <a href="/Information" class="btn btn-info">מידע על העמותה</a>
             <a href="Join" class="btn btn-info btn-light joinbut">הרשם כמתנדב חדש</a>
-
+            <a href="/Information" class="btn btn-info">מידע על העמותה</a>
+            <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
+            <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
             
-
-
           </div>
         </div>
 

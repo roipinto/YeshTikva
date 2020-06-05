@@ -1,10 +1,7 @@
 ﻿import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import Volunteer from './Volunteer';
+import MyTitle from '../Title';
 
 class VolunteerDashboard extends Component {
     constructor(props) {
@@ -78,7 +75,6 @@ class VolunteerDashboard extends Component {
 
 
 
-
         }
         axios.post('/volunteers.json', volunteer)
 
@@ -92,12 +88,7 @@ class VolunteerDashboard extends Component {
     render() {
         return (
             <div>
-
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">לוח מתנדבים</div>
-                    </div>
-                </div>
+                 <MyTitle title="לוח מתנדבים" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
@@ -212,7 +203,6 @@ class VolunteerDashboard extends Component {
                 </form>
 
                 <div>
-
                     <input onClick={this.handleSubmit} type="submit" value=" הוסף מתנדב חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                 </div>
 
