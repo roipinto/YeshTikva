@@ -31,10 +31,9 @@ class MenuPage extends Component {
 
         <section id="boxes" class="py-3">
 
-        <a href="" class="btn btn-outline-primary btn-ctrl-panel">הוסף או הסר משתמש</a>
-        <a href="" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>
+        <a href="AddOrRemove" class="btn btn-outline-primary btn-ctrl-panel">הוסף או הסר משתמש</a>
+        <a href="Properties" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>
         </section>
-
 
 
 

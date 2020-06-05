@@ -19,6 +19,8 @@ import ToolbarNotConnect from './Toolbar/ToolbarNotConnect';
 import ToolbarConnect from './Toolbar/ToolbarConnect';
 import InformationForVolunteer from './InformationForVolunteer/InformationForVolunteer';
 import ContectUs from './ContectUs/ContectUs';
+import AddOrRemove from './AddOrRemove/AddOrRemove';
+import Properties from './Properties/Properties';
 import './App.css';
 import { Redirect } from 'react-router-dom'
 
@@ -65,6 +67,8 @@ class App extends Component {
             <Route path="/MenuPage" component={MenuPage} />
             <Route path="/InformationForVolunteer" component={InformationForVolunteer} />
             <Route path="/ContectUs" component={ContectUs} />
+            <Route path="/AddOrRemove" component={AddOrRemove} />
+            <Route path="/Properties" component={Properties} />
           </Switch>
 
         </div>
