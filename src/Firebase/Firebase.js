@@ -1,4 +1,6 @@
 import firebase from 'firebase' 
+import 'firebase/storage';
+import 'firebase/database';
 //import firebase from "@firebase/database";
 
 
@@ -12,7 +14,15 @@ const firebaseConfig = {
     appId: "1:144284186236:web:260c0cdd1ed66aed333bf9",
     measurementId: "G-QX3EMS8ELV"
   };
-const fire = firebase.initializeApp(firebaseConfig)
-export default fire
+const fire = firebase.initializeApp(firebaseConfig);
+const storage = firebase.storage();
+
+const database = firebase.database();
+
+export {
+    fire, storage, database as default
+}
+
+
 
 

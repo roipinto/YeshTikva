@@ -2,6 +2,7 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../EditEventsPage/axios-events';
+import database from '../Firebase/Firebase';
 
 
 class Volunteer extends Component {
@@ -20,7 +21,7 @@ class Volunteer extends Component {
 
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref(`volunteers/`);
+        const itemsRef = database.ref(`volunteers/`);
         itemsRef.on('value', (snapshot) => {
             let volunteers = snapshot.val();
             let newState = [];
@@ -109,16 +110,16 @@ class Volunteer extends Component {
                         { title: "טלפון", field: 'phone' },
                         { title: "גיל", field: 'age' },
                         { title: "רקע על המתנדב", field: 'backround' },
-                        { title: "האם יש מחלה או בעיה רפואית", field: 'sickness' },
-                        { title: "האם התחסן בכל החיסונים בילדות", field: 'immunization' },
+                        { title: "מחלה, בעיה רפואית", field: 'sickness' },
+                        { title: "חיסונים בילדות", field: 'immunization' },
                         { title: "איך הגיע אלינו", field: 'howGetToUs' },
-                        { title: "אילו איזורים רלוונטים להתנדבות", field: 'areaVolunteering' },
+                        { title:  "איזורים שרלוונטים להתנדבות", field: 'areaVolunteering' },
 
                         { title: "תחומי התנדבות", field: 'typeVolunteering' },
                         { title: "שעות מעודפות להתנדבות", field: 'timeVolunteering' },
-                        { title: "האם יש ניסיון התנדבות בבית חולים", field: 'experience' },
+                        { title: "ניסיון התנדבות בבית חולים", field: 'experience' },
                         { title: "הערות", field: 'notes' },
-                        { title: "איך ירצה לקבל עדכונים מאיתנו", field: 'update' },
+                        { title: "עדכונים מאיתנו", field: 'update' },
                         { title: "מי טיפל בבקשה", field: 'howSubmitted' }
                         
 

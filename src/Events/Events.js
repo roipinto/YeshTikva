@@ -41,7 +41,10 @@ class Events extends Component {
             <div>
 
                 <MyTitle title="אירועים" />
-
+                <p></p>
+                <div class="alert alert-warning">
+                    <strong>אירועים קרובים שכדאי להגיע אליהם</strong>
+                </div>
                 <div id="event">
                     {this.state.events.map(event => (
                         <PreviewEvent

@@ -21,6 +21,7 @@ import InformationForVolunteer from './InformationForVolunteer/InformationForVol
 import ContectUs from './ContectUs/ContectUs';
 import AddOrRemove from './AddOrRemove/AddOrRemove';
 import Properties from './Properties/Properties';
+import Upload from './Properties/Upload';
 import './App.css';
 import { Redirect } from 'react-router-dom'
 
@@ -69,6 +70,7 @@ class App extends Component {
             <Route path="/ContectUs" component={ContectUs} />
             <Route path="/AddOrRemove" component={AddOrRemove} />
             <Route path="/Properties" component={Properties} />
+            <Route path="/Upload" component={Upload} />
           </Switch>
 
         </div>

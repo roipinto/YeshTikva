@@ -62,6 +62,7 @@ class PatientDashboard extends Component {
             placeInRoom: this.input7.value,
 
             contact: this.input8.value,
+            contactemail: this.input22.value,
             isolation: this.input9.value,
             eating: this.input10.value,
             occupation: this.input11.value,
@@ -95,78 +96,12 @@ class PatientDashboard extends Component {
                 <MyTitle title="לוח מטופלים" />
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
-
-
-                    <div class="col-lg-4">
-                        <div class="Card bg-white text-center card-form">
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder=" עמותות נוספות " ref={(input15) => this.input15 = input15}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   שם מלא שלך " ref={(input16) => this.input16 = input16}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   מחלות של המאושפז " ref={(input17) => this.input17 = input17}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="    רקע על המאושפז " ref={(input18) => this.input18 = input18}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="    סיבת אשפוז " ref={(input19) => this.input19 = input19}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   רקע משפחתי " ref={(input20) => this.input20 = input20}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="   הערות    " ref={(input21) => this.input21 = input21}></input>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    
 
                     <div class="col-lg-4">
                         <div class="Card bg-white text-center card-form">
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder=" איש קשר - שם וטלפון " ref={(input8) => this.input8 = input8}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder=" האם נמצא בבידוד " ref={(input9) => this.input9 = input9}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   צורת אכילה " ref={(input10) => this.input10 = input10}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="    תעסוקה " ref={(input11) => this.input11 = input11}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="    רמת תקשורת " ref={(input12) => this.input12 = input12}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   האם ישן בלילה  " ref={(input13) => this.input13 = input13}></input>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="   מעורבות משפחה    " ref={(input14) => this.input14 = input14}></input>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <div class="col-lg-4">
-                        <div class="Card bg-white text-center card-form">
-                            <div class="card-body">
-                                <form>
+                                
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
                                     </div>
@@ -174,22 +109,22 @@ class PatientDashboard extends Component {
                                         <input type="number" class="form-control form-control-lg text-right" required placeholder="תעודת זהות" ref={(input2) => this.input2 = input2}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control form-control-lg text-right" required placeholder="גיל " ref={(input3) => this.input3 = input3}></input>
+                                        <input type="number" class="form-control form-control-lg text-right" required placeholder="גיל" ref={(input3) => this.input3 = input3}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="בית חולים " ref={(input4) => this.input4 = input4}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="בית חולים" ref={(input4) => this.input4 = input4}></input>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מחלקה  " ref={(input5) => this.input5 = input5}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מחלקה" ref={(input5) => this.input5 = input5}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder=" מספר חדר " ref={(input6) => this.input6 = input6}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מספר חדר" ref={(input6) => this.input6 = input6}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder=" מיקום מיטה בחדר " ref={(input7) => this.input7 = input7}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מיקום מיטה בחדר" ref={(input7) => this.input7 = input7}></input>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -198,18 +133,91 @@ class PatientDashboard extends Component {
 
 
 
+                    <div class="col-lg-4">
+                        <div class="Card bg-white text-center card-form">
+                            <div class="card-body">
+                              
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איש קשר - שם וטלפון" ref={(input8) => this.input8 = input8}></input>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg text-right" required placeholder="איש קשר - אמייל" ref={(input22) => this.input22 = input22}></input>
+                                </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם נמצא בבידוד" ref={(input9) => this.input9 = input9}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="צורת אכילה" ref={(input10) => this.input10 = input10}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="תעסוקה" ref={(input11) => this.input11 = input11}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="רמת תקשורת" ref={(input12) => this.input12 = input12}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="האם ישן בלילה" ref={(input13) => this.input13 = input13}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מעורבות משפחה" ref={(input14) => this.input14 = input14}></input>
+                                    </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-4">
+                        <div class="Card bg-white text-center card-form">
+                            <div class="card-body">
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder=" עמותות נוספות " ref={(input15) => this.input15 = input15}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא שלך" ref={(input16) => this.input16 = input16}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="מחלות של המאושפז" ref={(input17) => this.input17 = input17}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="רקע על המאושפז" ref={(input18) => this.input18 = input18}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="סיבת אשפוז" ref={(input19) => this.input19 = input19}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="רקע משפחתי" ref={(input20) => this.input20 = input20}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="הערות" ref={(input21) => this.input21 = input21}></input>
+                                    </div>
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <input type="submit" value="הוסף מטופל חדש" className="btn btn btn-info btn-sm center-block agreeBut"></input>
+
+                    </div>
+
+                    
 
 
 
 
+               
 
+
+                    
 
 
                 </form>
 
-                <div>
-                    <input onClick={this.handleSubmit} type="submit" value=" הוסף מטופל חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
-                </div>
 
 
                 <div>

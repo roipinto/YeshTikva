@@ -2,6 +2,7 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../EditEventsPage/axios-events';
+import database from '../Firebase/Firebase';
 
 
 class Patient extends Component {
@@ -20,7 +21,7 @@ class Patient extends Component {
 
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref(`patients/`);
+        const itemsRef = database.ref(`patients/`);
         itemsRef.on('value', (snapshot) => {
             let patients = snapshot.val();
             let newState = [];
@@ -36,6 +37,7 @@ class Patient extends Component {
                     placeInRoom: patients[patient].placeInRoom,
 
                     contact: patients[patient].contact,
+                    contactemail: patients[patient].contactemail,
                     isolation: patients[patient].isolation,
                     eating: patients[patient].eating,
                     occupation: patients[patient].occupation,
@@ -107,6 +109,7 @@ class Patient extends Component {
                         { title: "מיקום מיטה בחדר ", field: 'placeInRoom' },
 
                         { title: "איש קשר שם וטלפון ", field: 'contact' },
+                        { title: "איש קשר אמייל", field: 'contactemail' },
                         { title: " האם נמצא בבידוד", field: 'isolation' },
                         { title: "צורת אכילה ", field: 'eating' },
                         { title: "תעסוקה ", field: 'occupation' },
@@ -164,6 +167,7 @@ class Patient extends Component {
                                             placeInRoom: newData.placeInRoom,
 
                                             contact: newData.contact,
+                                            contactemail: newData.contactemail,
                                             isolation: newData.isolation,
                                             eating: newData.eating,
                                             occupation: newData.occupation,

@@ -2,6 +2,7 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../EditEventsPage/axios-events';
+import database from '../Firebase/Firebase';
 
 
 class Coordinator extends Component {
@@ -20,7 +21,7 @@ class Coordinator extends Component {
 
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref(`coordinators/`);
+        const itemsRef = database.ref(`coordinators/`);
         itemsRef.on('value', (snapshot) => {
             let coordinators = snapshot.val();
             let newState = [];

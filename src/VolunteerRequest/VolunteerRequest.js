@@ -3,6 +3,7 @@ import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../EditEventsPage/axios-events';
 import emailjs from 'emailjs-com';
+import database from '../Firebase/Firebase';
 
 
 class VolunteerRequest extends Component {
@@ -21,7 +22,7 @@ class VolunteerRequest extends Component {
 
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref(`volunteerRequests/`);
+        const itemsRef = database.ref(`volunteerRequests/`);
         itemsRef.on('value', (snapshot) => {
             let volunteerRequests = snapshot.val();
             let newState = [];
@@ -114,21 +115,18 @@ class VolunteerRequest extends Component {
 
                         { title: "טלפון", field: 'phone' },
                         { title: "גיל", field: 'age' },
-                        { title: "רקע על המתנדב", field: 'backround' },
-                        { title: "האם יש מחלה או בעיה רפואית", field: 'sickness' },
-                        { title: "האם התחסן בכל החיסונים בילדות", field: 'immunization' },
+                        { title: "רקע ", field: 'backround' },
+                        { title: "בעיה רפואית", field: 'sickness' },
+                        { title: "חיסונים בילדות", field: 'immunization' },
                         { title: "איך הגיע אלינו", field: 'howGetToUs' },
-                        { title: "אילו איזורים רלוונטים להתנדבות", field: 'areaVolunteering' },
+                        { title: "איזור התנדבות", field: 'areaVolunteering' },
 
                         { title: "תחומי התנדבות", field: 'typeVolunteering' },
-                        { title: "שעות מעודפות להתנדבות", field: 'timeVolunteering' },
-                        { title: "האם יש ניסיון התנדבות בבית חולים", field: 'experience' },
+                        { title: "שעות התנדבות", field: 'timeVolunteering' },
+                        { title: "התנדבות בבית חולים", field: 'experience' },
                         { title: "הערות", field: 'notes' },
-                        { title: "איך ירצה לקבל עדכונים מאיתנו", field: 'update' },
+                        { title: "קבלת עדכונים", field: 'update' },
                         { title: "מי טיפל בבקשה", field: 'howSubmitted' }
-
-
-
                     ]}
 
 
@@ -146,7 +144,7 @@ class VolunteerRequest extends Component {
                             onClick: (evt, data) => {
                                 axios.delete(`volunteerRequests/` + data[0].id + '.json'),
                                     axios.post('/volunteers.json', data[0]),
-                                    emailjs.send('default_service', 'template_wWK10Alu', { from_name: data[0].name, to_name: data[0].email, subject: "hello", message_html:"hello hello"} ,'user_FDonzgo2Fb4KPMm3Ko062')
+                                    emailjs.send('default_service', 'template_wWK10Alu', { from_name: data[0].name, to_name: "cchenmmichaeli@gmail.com", subject: "hello", message_html:"hello hello"} ,'user_FDonzgo2Fb4KPMm3Ko062')
                                     .then(function (response) {
                                         console.log("");
                                     });
@@ -171,6 +169,11 @@ class VolunteerRequest extends Component {
                                       //  this.setState({ data }, () => resolve());
                                        // console.log(oldData.id);
                                         axios.delete(`volunteerRequests/` + oldData.id + '.json')
+
+                                        emailjs.send('default_service', 'zisi', { from_name: "דחיית בקשת התנדבות", to_name: oldData.email, subject: "hello", message_html: "היי, קיבלנו את בקשת ההתנדבות שלך והחלטנו שלא להתקדם כרגע, מאחלים הרבה הצלחה בהמשך" }, 'user_FDonzgo2Fb4KPMm3Ko062')
+                                            .then(function (response) {
+                                                console.log("");
+                                            });
                                     }
                                     resolve()
                                 }, 1000)

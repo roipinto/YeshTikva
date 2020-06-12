@@ -1,15 +1,53 @@
 import React, { Component } from 'react';
 import './Information.css';
 import MyTitle from '../Title';
+import axios from '../EditEventsPage/axios-events';
+import './Information.css';
+
+
+class Information extends Component {
 
 
 
-class Home extends Component {
+    state = {
+        events: [],
+        loading: true
+    }
 
   handleSubmit(event) {
     alert('An essay was submitted: ' + this.state.value);
     event.preventDefault();
   }
+
+
+
+    componentDidMount() {
+        axios.get('/info.json')
+            .then(res => {
+                const fetchedEvents = [];
+                for (let key in res.data) {
+                    fetchedEvents.push({
+                        ...res.data[key],
+                        id: key
+                    });
+                    console.log(fetchedEvents[0].information);
+                    document.getElementById("demo").innerHTML = fetchedEvents[0].information;
+                }
+                this.setState({ loading: false, events: fetchedEvents });
+                const f = fetchedEvents[0].information;
+            })
+            .catch(err => {
+                this.setState({ loading: false });
+            })
+
+     
+      
+    }
+
+    
+
+
+
   render() {
     return (
 
@@ -24,28 +62,9 @@ class Home extends Component {
               <div class="card-body ">
 
 
-                <p class="text muted text-right">
-                  עמותת 'יש תקווה' הוקמה בשנת 2015 מתוך מטרה להעניק ליווי וסיוע לחולים,
-אשר נאלצים להתאשפז לתקופות ארוכות או להגיע לבדיקות וטיפולים בבתי חולים באופן תדיר. </p>
-                <p class="text muted text-right">
-                  העמותה מופעלת ע"י מעל 1000 מתנדבות ומתנדבים נאמנים,
-                  הפועלים ב-20 בתי חולים בכל רחבי הארץ, 24/7, בשבת, חג וחול.
-                  אנו מלווים קרוב ל-1500 חולים מדי שבוע.
-                                </p>
-
-                <p class="text muted text-right">
-                  במסגרת הפרויקט המתנדבים יעניקו סיוע ותמיכה למטופלים ובני משפחתם בליווי ברחבי בית החולים,
-                  בחברה , ובמילוי מקום קרוב משפחה ליד מיטת החולה.
-                            </p>
-
-                <p class="text muted text-right">
-                  המתנדבות והמתנדבים בעמותה מגיעים מכלל החברה הישראלית,
-                  כאשר המכנה המשותף לכולם הוא תפיסת העולם המבוססת על ערך הנתינה,
-                  עשיית חסד ואחריות חברתית מפותחת.
-                            </p>
-
-                <p class="text muted text-right">ההתנדבות מספקת משמעותית וממכרת :)
-                            </p>
+                            <div id="demo">  </div>
+                                
+                          
               </div>
             </div>
           </div>
@@ -57,5 +76,5 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default Information;
 

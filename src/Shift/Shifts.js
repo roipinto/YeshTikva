@@ -2,7 +2,8 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../EditEventsPage/axios-events';
-
+import database from '../Firebase/Firebase';
+import emailjs from 'emailjs-com';
 
 class Shifts extends Component {
 
@@ -20,7 +21,7 @@ class Shifts extends Component {
 
 
     componentDidMount() {
-        const itemsRef = firebase.database().ref(`shifts/`);
+        const itemsRef = database.ref(`shifts/`);
         itemsRef.on('value', (snapshot) => {
             let shifts = snapshot.val();
             let newState = [];
@@ -28,10 +29,12 @@ class Shifts extends Component {
                 newState.push({
                     id: shift,
                     date: shifts[shift].date,
-                    time: shifts[shift].time,
+                    starttime: shifts[shift].starttime,
+                    endtime: shifts[shift].endtime,
                     patient: shifts[shift].patient,
                     volunteer: shifts[shift].volunteer,
-                    hospital: shifts[shift].hospital
+                    hospital: shifts[shift].hospital,
+                    text: shifts[shift].text
 
                 });
 
@@ -74,25 +77,21 @@ class Shifts extends Component {
 
                 <MaterialTable
                     title="  משמרות"
-                    //columns={test}
+                   
 
                     data={this.state.shifts}
 
                     columns={[
                         { title: "תאריך", field: 'date' },
-                        { title: "שעה", field: 'time' },
+                        { title: "שעת התחלה", field: 'starttime' },
+                        { title: "שעת סיום", field: 'endtime' },
                         { title: "מטופל", field: 'patient' },
                         { title: "מתנדב", field: 'volunteer' },
-                        { title: "בית חולים", field: 'hospital' }
+                        { title: "בית חולים", field: 'hospital' },
+                         { title: "הודעה למתנדב במייל", field: 'text' }
 
 
-                        // { title: 'Surname', field: 'surname' },
-                        //{ title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-                        //    {
-                        //  title: 'Birth Place',
-                        //    field: 'birthCity',
-                        //     lookup: { 34: 'Birth', 63: 'Birth' },
-                        //  },
+                       
                     ]}
 
 
@@ -108,13 +107,65 @@ class Shifts extends Component {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
                             onClick: (evt, data) => axios.delete(`shifts/` + data[0].id + '.json'),
+                       
+                        },
+                        {
+                            icon: 'email',
+                            tooltip: 'Email Patient and Volunteer',
+                            onClick: (event, data) => {
+
+                                var x = data[0].starttime;
+                                var y = data[0].endtime;
+                                var t = data[0].patient;
+                                var z = data[0].hospital;
+                                var k = data[0].text;
+                                var d = data[0].volunteer;
+                               
+                                var ref = database.ref('volunteers/').orderByChild("name").equalTo(data[0].volunteer)
+                                    .on('value', snapshot => {
+                                        snapshot.forEach(userSnapshot => {
+                                            let data = userSnapshot.val();
+                                            console.log('data: ', data);
+                                            console.log(data.email);
+                                            emailjs.send('default_service', 'zisi', { from_name: "שובצת להתנדבות", to_name: data.email, subject: "hello", message_html: "שלום,", message_html2: "שובצת להתנדבות בין השעות: " + x + "-" + y, message_html3: "בבית חולים: " + z, message_html4: "עבור מטופל: " + t, message_html5: k}, 'user_FDonzgo2Fb4KPMm3Ko062')
+                                    .then(function (response) {
+                                        console.log("");
+                                    });     
+                                        });
+                                    });
+
+                                var ref = database.ref('patients/').orderByChild("name").equalTo(data[0].patient)
+                                    .on('value', snapshot => {
+                                        snapshot.forEach(userSnapshot => {
+                                            let data = userSnapshot.val();
+                                            console.log('data: ', data);
+                                            console.log(data.contactemail);
+                                            emailjs.send('default_service', 'zisi', { from_name: "שובצה התנדבות", to_name: data.contactemail, subject: "hello", message_html: "שלום,", message_html2: "שובצה התנדבות בין השעות: " + x + "-" + y, message_html3: "שם המתנדב: " + d }, 'user_FDonzgo2Fb4KPMm3Ko062')
+                                                .then(function (response) {
+                                                    console.log("");
+                                                });
+                                        });
+                                    });
 
 
 
+
+
+                               
+
+
+
+                               alert("אמייל נשלח למתנדב ולמטופל")
+                            }
+                               
                         }
 
 
-                    ]}
+                    ]
+                   
+                    
+                    
+                    }
 
                     editable={{
 
@@ -125,17 +176,17 @@ class Shifts extends Component {
 
                                         const shift = {
                                             date: newData.date,
-                                            time: newData.time,
+                                            starttime: newData.starttime,
+                                            endtime: newData.endtime,
                                             patient: newData.patient,
                                             volunteer: newData.volunteer,
                                             hospital: newData.hospital,
+                                            text: newData.text,
 
                                         }
                                         axios.put(`shifts/` + newData.id + '.json', shift)
 
-                                        /* const data = this.state.data;
-                                        data.push(newData);
-                                        this.setState({ data }, () => resolve()); */
+                                        
                                     }
                                     resolve();
                                 }, 1000);

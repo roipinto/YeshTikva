@@ -1,19 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component , useState } from 'react';
 import Picture1 from '../img/Picture1.jpg';
 import Picture2 from '../img/Picture2.jpg';
 import Picture3 from '../img/Picture3.jpg';
 import Picture4 from '../img/Picture4.jpg';
 import './HomePage.css';
 import MyTitle from '../Title';
-
+import Upload from '../Properties/Upload';
+import firebase, { storage } from '../Firebase/Firebase'; 
 
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            url1: '',
+            url2: '',
+            url3: '',
+            url4: ''
+        }
+        this.getImage1('url1')
+        this.getImage2('url2')
+        this.getImage3('url3')
+        this.getImage4('url4')
+    }
+
+    getImage1(image) {
+        let { state } = this
+        storage.ref("images/").child('1.JPG').getDownloadURL().then((url) => {
+            state[image] = url
+            this.setState(state)
+        }).catch((error) => {
+            // Handle any errors
+        })
+    }
+
+    getImage2(image) {
+        let { state } = this
+        storage.ref("images/").child('2.JPG').getDownloadURL().then((url) => {
+            state[image] = url
+            this.setState(state)
+        }).catch((error) => {
+            // Handle any errors
+        })
+    }
+
+
+    getImage3(image) {
+        let { state } = this
+        storage.ref("images/").child('3.JPG').getDownloadURL().then((url) => {
+            state[image] = url
+            this.setState(state)
+        }).catch((error) => {
+            // Handle any errors
+        })
+    }
+
+    getImage4(image) {
+        let { state } = this
+        storage.ref("images/").child('4.JPG').getDownloadURL().then((url) => {
+            state[image] = url
+            this.setState(state)
+        }).catch((error) => {
+            // Handle any errors
+        })
+    }
+
+    
+
   render() {
     return (
       <div className="Home">
 
-        <MyTitle title="!הצטרף לעמותת יש תקווה" />
+        <MyTitle title="הצטרף לעמותת יש תקווה" />
 
 
         <div class="jumbotron-fluid " id="sentence">
@@ -32,12 +91,17 @@ class Home extends Component {
 
         <div id="images">
           <section id="boxes" class="py-3">
-            <div class="row justify-content-md-center mdb-lightbox no-margin">
-              <div class="py-2 image" >
-                <img src={Picture1} width="300" height="240" alt=""></img>
-                <img src={Picture2} width="300" height="240" alt=""></img>
-                <img src={Picture3} width="300" height="240" alt=""></img>
-                <img src={Picture4} width="300" height="240" alt=""></img>
+                    <div class="row justify-content-md-center mdb-lightbox no-margin">
+                        <div class="py-2 image" >
+                            
+                            <span> <img src={this.state.url1} width="460" height="360" alt=""></img> </span>
+                            <span> <img src={this.state.url2 } width="460" height="360" alt=""></img> </span>
+                            <span> <img src={this.state.url3 } width="460" height="360" alt=""></img> </span>
+                            <span> <img src={this.state.url4 } width="460" height="360" alt=""></img> </span>
+
+                     
+                        
+                      
               </div>
             </div>
           </section>

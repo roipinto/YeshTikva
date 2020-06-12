@@ -7,6 +7,8 @@ import axios from '../EditEventsPage/axios-events';
 import Shifts from './Shifts';
 import MyTitle from '../Title';
 
+
+
 class ShiftDashboard extends Component {
     constructor(props) {
         super(props);
@@ -51,14 +53,16 @@ class ShiftDashboard extends Component {
 
 
     handleSubmit(e) {
-        alert(' משמרת חדשב נוצרה ');
+        alert(' משמרת חדשה נוצרה ');
         const shift = {
             shifts: this.state.shift,
             date: this.input.value,
-            time: this.input2.value,
+            starttime: this.input2.value,
+            endtime: this.input6.value,
             patient: this.input3.value,
             hospital: this.input5.value,
-            volunteer: this.input4.value
+            volunteer: this.input4.value,
+             text: this.input7.value
 
         }
         axios.post('/shifts.json', shift)
@@ -84,19 +88,26 @@ class ShiftDashboard extends Component {
 
                                 <form>
                                     <div class="form-group">
-                                        <input type="date" class="form-control form-control-lg text-right" ref={(input) => this.input = input}></input>
+                                        <input type="date" class="form-control form-control-lg text-right" required ref={(input) => this.input = input}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="time" class="form-control form-control-lg text-right" placeholder="שם מלא" required ref={(input2) => this.input2 = input2}></input>
+                                        <input type="time" class="form-control form-control-lg text-right" placeholder="שעת התחלה" required ref={(input2) => this.input2 = input2}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל " required ref={(input3) => this.input3 = input3}></input>
+                                        <input type="time" class="form-control form-control-lg text-right" placeholder="שעת סיום" required ref={(input6) => this.input6 = input6}></input>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל" required ref={(input3) => this.input3 = input3}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מתנדב " ref={(input4) => this.input4 = input4}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מתנדב" ref={(input4) => this.input4 = input4}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="בית חולים " required ref={(input5) => this.input5 = input5}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="בית חולים" required ref={(input5) => this.input5 = input5}></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control form-control-lg text-right" placeholder="הודעת טקסט למייל" required ref={(input7) => this.input7 = input7}></textarea>
                                     </div>
 
 
