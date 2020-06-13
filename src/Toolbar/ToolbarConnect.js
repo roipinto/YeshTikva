@@ -20,7 +20,7 @@ const toolbar = (props) => (
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a href=" " class="btn btn-outline-primary">דף הבית</a>
+                        <a href="/HomePage" class="btn btn-outline-primary">דף הבית</a>
                     </li>
                     <li class="nav-item">
                         <a href="/MenuPage" class="btn btn-outline-primary">לוח בקרה למשתמש</a>

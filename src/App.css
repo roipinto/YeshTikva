@@ -3,29 +3,9 @@
   direction: rtl;
 }
 
-
 .navbar
 {
   background-color: white;
-}
-
-
-
-.display-4{
-  font-size: 5em;
-  font-family: 'Secular One', sans-serif;
-  background-color: steelblue;
-  color: white;
-}
-
-
-.py-1{
-  background-color:steelblue;
-  color: white;
-}
-
-.jumbotron{
-  color: white;
 }
 
 .agreeBut{

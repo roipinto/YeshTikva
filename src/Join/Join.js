@@ -9,7 +9,8 @@ import emailjs from 'emailjs-com';
 //import firebase from '../Firebase/Firebase';
 import database from '../Firebase/Firebase';
 import './Join.css';
-
+import MyTitle from '../Title';
+import SecondaryTitle from '../SecondaryTitle'
 
 
 class VolunteerRequestDashboard extends Component {
@@ -60,7 +61,7 @@ class VolunteerRequestDashboard extends Component {
         document.getElementById("show").style.visibility = "hidden";
         document.getElementById("show2").style.visibility = "hidden";
             
-        alert('נוצרה בקשה חדשה');
+        //alert('נוצרה בקשה חדשה');
         const volunteerRequest = {
             volunteerRequests: this.state.volunteerRequest,
             name: this.input.value,
@@ -131,18 +132,9 @@ class VolunteerRequestDashboard extends Component {
         return (
             <div>
 
-                <div class="jumbotron jumbotron-fluid py-1">
-                    <div class="container">
-                        <div class="display-4">בקשת התנדבות</div>
-                        
-                    </div>
-                </div>
-
-
-                <p></p>
-
-            
-                <div id="show" class="alert alert-danger" role="alert"> <strong>אנא מלאו את כל השדות</strong></div>
+                <MyTitle title="הרשם כמתנדב חדש"/>
+ 
+                <div id="show" class="rtt11"><SecondaryTitle title='אנא מלאו את כל השדות' > </SecondaryTitle></div>
                 <div id="hide" class="alert alert-success">
                     <strong>הבקשה שלך התקבלה!</strong>
                 </div>
@@ -306,7 +298,7 @@ class VolunteerRequestDashboard extends Component {
                    
                     
                     <div>
-                        <input type="submit" value="הגש בקשה" className="btn-save btn btn-primary btn-sm"></input>
+                        <input type="submit" value="הגש בקשה" className="btn btn btn-info btn-sm center-block agreeBut"></input>
               
                     </div>
 

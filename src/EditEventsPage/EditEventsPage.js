@@ -86,13 +86,13 @@ class EditEventsPage extends Component {
               <div class="card-body ">
                 <form>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="כותרת "></input>
+                    <input type="text" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="כותרת " required></input>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg text-right" ref={(input3) => this.input3 = input3} placeholder="מיקום"></input>
+                    <input type="text" class="form-control form-control-lg text-right" ref={(input3) => this.input3 = input3} placeholder="מיקום" required></input>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg text-right" ref={(input2) => this.input2 = input2} placeholder="מידע"></input>
+                    <input type="text" class="form-control form-control-lg text-right" ref={(input2) => this.input2 = input2} placeholder="מידע" required></input>
                   </div>
                   <input type="submit" value=" הוסף אירוע חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                 </form>

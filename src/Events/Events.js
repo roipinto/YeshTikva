@@ -6,7 +6,7 @@ import Event from './Event';
 import PreviewEvent from './PreviewEvent';
 import './Event.css';
 import MyTitle from '../Title';
-
+import SecondaryTitle from '../SecondaryTitle'
 class Events extends Component {
 
 
@@ -41,10 +41,9 @@ class Events extends Component {
             <div>
 
                 <MyTitle title="אירועים" />
-                <p></p>
-                <div class="alert alert-warning">
-                    <strong>אירועים קרובים שכדאי להגיע אליהם</strong>
-                </div>
+                
+                <SecondaryTitle title="אירועים קרובים שכדאי להגיע אליהם"/>
+
                 <div id="event">
                     {this.state.events.map(event => (
                         <PreviewEvent

@@ -22,79 +22,77 @@ class Properties extends Component {
         properties: [],
         loading: true,
         selectedEventId: null
-     
+
     }
 
 
-  handleSubmit(event) {
+    handleSubmit(event) {
 
-      const info = {      
-          information: this.input.value,
-      }
+        const info = {
+            information: this.input.value,
+        }
 
-      axios.put(`/info/-M9JmXhEbvCaSGdQ4Nc9.json`, info).catch(error => console.log(error)).then(function (response) {
-          alert('עודכן');
+        axios.put(`/info/-M9JmXhEbvCaSGdQ4Nc9.json`, info).catch(error => console.log(error)).then(function (response) {
+            alert('עודכן');
 
-      }).then(function (response) {
-          window.location.reload();
-      });
-
-
-      event.preventDefault();
-  }
+        }).then(function (response) {
+            window.location.reload();
+        });
 
 
-  render() {
-    return (
+        event.preventDefault();
+    }
 
-      <div>
 
-            <MyTitle title="הגדרות" /> <p></p> <p></p>
+    render() {
+        return (
 
-            <div class="alert alert-warning">
-                <strong> ערוך דף מידע למשתשמש</strong>
-            </div>
+            <div>
 
-            <form id = "1" onSubmit={this.handleSubmit} class="row justify-content-md-center">
-                <div class="col-lg-4 ">
-                    <div class="Card bg-white text-center card-form ">
-                        <div class="card-body ">
-                            <form>
-                               
+                <MyTitle title="הגדרות" /> <p></p> <p></p>
 
-                                <div class="form-group">
-                                    <textarea id="info" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="עדכן כאן מידע חדש"></textarea >
-                                </div>
+                <div class="alert alert-warning">
+                    <strong> ערוך דף מידע למשתשמש</strong>
+                </div>
 
-                                
-                                
-                                <input type="submit" value="עדכן" className="btn btn btn-info btn-sm center-block agreeBut"></input>
-                            </form>
+                <form id="1" onSubmit={this.handleSubmit} class="row justify-content-md-center">
+                    <div class="col-lg-4 ">
+                        <div class="Card bg-white text-center card-form ">
+                            <div class="card-body ">
+                                <form>
+
+
+                                    <div class="form-group">
+                                        <textarea id="info" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="עדכן כאן מידע חדש"></textarea >
+                                    </div>
+
+                                    <input type="submit" value="עדכן" className="btn btn btn-info btn-sm center-block agreeBut"></input>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
-            <ReactFirebaseFileUpload1 />
-            <br />
-            <br />
-            <ReactFirebaseFileUpload2 />
-            <br />
-            <br />
-            <ReactFirebaseFileUpload3 />
-            <br />
-            <br />
-            <ReactFirebaseFileUpload4 />
-            <br />
-            <br />
-            <Files />
-            <br />
-            <br />
-            <Files2 />
+                <ReactFirebaseFileUpload1 />
+                <br />
+                <br />
+                <ReactFirebaseFileUpload2 />
+                <br />
+                <br />
+                <ReactFirebaseFileUpload3 />
+                <br />
+                <br />
+                <ReactFirebaseFileUpload4 />
+                <br />
+                <br />
+                <Files />
+                <br />
+                <br />
+                <Files2 />
 
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 

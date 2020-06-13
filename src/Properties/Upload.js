@@ -127,7 +127,7 @@ const ReactFirebaseFileUpload1 = () => {
             <br />
 
             <br />
-            <img id="1" width="460" height="360" src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
+            <img id="1" width="320" height="240" src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
           
            
         </div>

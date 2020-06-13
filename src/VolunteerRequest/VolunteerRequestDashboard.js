@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import axios from '../EditEventsPage/axios-events';
 import VolunteerRequest from './VolunteerRequest';
 import MyTitle from '../Title';
+import SecondaryTitle from '../SecondaryTitle'
 
 class VolunteerRequestDashboard extends Component {
     constructor(props) {
@@ -93,11 +94,7 @@ class VolunteerRequestDashboard extends Component {
 
                 <MyTitle title="לוח בקשות להתנדבות" />
 
-                <p></p>
-
-                <div class="alert alert-warning">
-                    <strong> בקשות שממתינות לטיפול</strong>
-                </div>
+                <SecondaryTitle title='בקשות שממתינות לטיפול'> </SecondaryTitle>
 
                 <div>
                     <h1> </h1>

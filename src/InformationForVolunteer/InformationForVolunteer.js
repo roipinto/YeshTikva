@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MyTitle from '../Title';
 import firebase, { storage } from '../Firebase/Firebase'; 
 import './InformationForVolunteer.css';
-
+import SecondaryTitle from '../SecondaryTitle'
 
 class Home extends Component {
 
@@ -52,15 +52,13 @@ class Home extends Component {
      
 
         <MyTitle title="מידע למתנדב" /> <p></p> <p></p>
+        <SecondaryTitle title="קבצים של העמותה"></SecondaryTitle>
 
         <div class="row justify-content-md-center">
           <div class="col-md-7 py-2">
             <div class="card text-center text-black-50  bg-light">
               <div class="card-body ">
-                <p></p>
-                            <p>קבצים של העמותה</p>
-                            <br />
-                           
+                
                             <a href={this.state.url1} download> כללים הוראות וכל מה שחשוב לדעת</a>
                             <br />
                             <br />
