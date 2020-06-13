@@ -139,7 +139,16 @@ class Patient extends Component {
                         {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
-                            onClick: (evt, data) => axios.delete(`patients/` + data[0].id + '.json'),
+                            onClick: (evt, data) => {
+                                data.forEach(data1 => {
+                                    axios.delete(`patients/` + data1.id + '.json')
+                                });
+
+                            }
+
+
+
+                                //axios.delete(`patients/` + data[0].id + '.json'),
 
 
 

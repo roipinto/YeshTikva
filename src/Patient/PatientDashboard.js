@@ -81,7 +81,9 @@ class PatientDashboard extends Component {
 
 
         }
-        axios.post('/patients.json', patient)
+        axios.post('/patients.json', patient).then(function (response) {
+            window.location.reload();
+        });
 
 
         e.preventDefault();
@@ -141,7 +143,7 @@ class PatientDashboard extends Component {
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="איש קשר - שם וטלפון" ref={(input8) => this.input8 = input8}></input>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg text-right" required placeholder="איש קשר - אמייל" ref={(input22) => this.input22 = input22}></input>
+                                    <input type="email" class="form-control form-control-lg text-right" required placeholder="איש קשר - אמייל" ref={(input22) => this.input22 = input22}></input>
                                 </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="האם נמצא בבידוד" ref={(input9) => this.input9 = input9}></input>

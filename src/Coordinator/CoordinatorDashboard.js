@@ -62,7 +62,9 @@ class CoordinatorDashboard extends Component {
             notes: this.input4.value
 
         }
-        axios.post('/coordinators.json', coordinator)
+        axios.post('/coordinators.json', coordinator).then(function (response) {
+            window.location.reload();
+        });
 
 
         e.preventDefault();

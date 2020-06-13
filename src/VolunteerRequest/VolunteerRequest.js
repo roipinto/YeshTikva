@@ -142,12 +142,23 @@ class VolunteerRequest extends Component {
                             tooltip: 'Aprove All Selected Users',
                             icon: 'check',
                             onClick: (evt, data) => {
-                                axios.delete(`volunteerRequests/` + data[0].id + '.json'),
-                                    axios.post('/volunteers.json', data[0]),
-                                    emailjs.send('default_service', 'template_wWK10Alu', { from_name: data[0].name, to_name: "cchenmmichaeli@gmail.com", subject: "hello", message_html:"hello hello"} ,'user_FDonzgo2Fb4KPMm3Ko062')
-                                    .then(function (response) {
-                                        console.log("");
-                                    });
+                                data.forEach(data1 => {
+                                    axios.delete(`volunteerRequests/` + data1.id + '.json'),
+                                        axios.post('/volunteers.json', data1),                 
+                                        emailjs.send('default_service', 'template_wWK10Alu', { from_name: data1.name, to_name: data1.email, subject: "hello", message_html: "hello hello" }, 'user_FDonzgo2Fb4KPMm3Ko062')
+                                        .then(function (response) {
+                                            console.log("");
+                                        });
+                                })
+
+
+
+                             //   axios.delete(`volunteerRequests/` + data[0].id + '.json'),
+                             //       axios.post('/volunteers.json', data[0]),
+                             //       emailjs.send('default_service', 'template_wWK10Alu', { from_name: data[0].name, to_name: "cchenmmichaeli@gmail.com", subject: "hello", message_html:"hello hello"} ,'user_FDonzgo2Fb4KPMm3Ko062')
+                              //      .then(function (response) {
+                             //           console.log("");
+                                   // });
                             }
 
 

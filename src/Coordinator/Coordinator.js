@@ -84,7 +84,16 @@ class Coordinator extends Component {
                         {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
-                            onClick: (evt, data) => axios.delete(`coordinators/` + data[0].id + '.json'),
+                            onClick: (evt, data) => {
+                                data.forEach(data1 => {
+                                    axios.delete(`coordinators/` + data1.id + '.json')
+
+                                });
+
+                            }
+
+
+                                //axios.delete(`coordinators/` + data[0].id + '.json'),
 
 
 

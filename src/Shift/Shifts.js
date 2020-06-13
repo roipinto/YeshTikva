@@ -106,7 +106,20 @@ class Shifts extends Component {
                         {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
-                            onClick: (evt, data) => axios.delete(`shifts/` + data[0].id + '.json'),
+                            onClick: (evt, data) =>
+                            {
+                                data.forEach(data1 => {
+                                    axios.delete(`shifts/` + data1.id + '.json')
+
+                                });
+
+
+                           
+                            }
+
+
+
+                                //axios.delete(`shifts/` + data[0].id + '.json'),
                        
                         },
                         {
@@ -120,13 +133,17 @@ class Shifts extends Component {
                                 var z = data[0].hospital;
                                 var k = data[0].text;
                                 var d = data[0].volunteer;
+                                
                                
                                 var ref = database.ref('volunteers/').orderByChild("name").equalTo(data[0].volunteer)
                                     .on('value', snapshot => {
                                         snapshot.forEach(userSnapshot => {
                                             let data = userSnapshot.val();
                                             console.log('data: ', data);
+                                            console.log("hi");
                                             console.log(data.email);
+                                            
+                                            alert("אמייל נשלח למתנדב");
                                             emailjs.send('default_service', 'zisi', { from_name: "שובצת להתנדבות", to_name: data.email, subject: "hello", message_html: "שלום,", message_html2: "שובצת להתנדבות בין השעות: " + x + "-" + y, message_html3: "בבית חולים: " + z, message_html4: "עבור מטופל: " + t, message_html5: k}, 'user_FDonzgo2Fb4KPMm3Ko062')
                                     .then(function (response) {
                                         console.log("");
@@ -140,22 +157,23 @@ class Shifts extends Component {
                                             let data = userSnapshot.val();
                                             console.log('data: ', data);
                                             console.log(data.contactemail);
+                                            alert("אמייל נשלח למשפחה");
+                                            
                                             emailjs.send('default_service', 'zisi', { from_name: "שובצה התנדבות", to_name: data.contactemail, subject: "hello", message_html: "שלום,", message_html2: "שובצה התנדבות בין השעות: " + x + "-" + y, message_html3: "שם המתנדב: " + d }, 'user_FDonzgo2Fb4KPMm3Ko062')
                                                 .then(function (response) {
                                                     console.log("");
                                                 });
                                         });
                                     });
+                              
 
 
-
-
+                              
 
                                
 
 
 
-                               alert("אמייל נשלח למתנדב ולמטופל")
                             }
                                
                         }

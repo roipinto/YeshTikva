@@ -65,7 +65,10 @@ class ShiftDashboard extends Component {
              text: this.input7.value
 
         }
-        axios.post('/shifts.json', shift)
+        axios.post('/shifts.json', shift).then(function (response) {
+            window.location.reload();
+        });
+
 
 
         e.preventDefault();

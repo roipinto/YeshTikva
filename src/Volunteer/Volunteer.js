@@ -137,7 +137,17 @@ class Volunteer extends Component {
                         {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
-                            onClick: (evt, data) => axios.delete(`volunteers/` + data[0].id + '.json'),
+                            onClick: (evt, data) => {
+                                data.forEach(data1 => {
+
+                                    axios.delete(`volunteers/` + data1.id + '.json')
+                                });
+
+                                 //axios.delete(`volunteers/` + data[0].id + '.json'),
+
+                            }
+                            
+                           
 
                          
 
