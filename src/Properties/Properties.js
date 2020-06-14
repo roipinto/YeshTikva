@@ -10,6 +10,7 @@ import ReactFirebaseFileUpload4 from './Upload4';
 import Files from './files';
 import Files2 from './files2';
 
+
 class Properties extends Component {
 
     constructor(props) {
@@ -52,7 +53,7 @@ class Properties extends Component {
                 <MyTitle title="הגדרות" /> <p></p> <p></p>
 
                 <div class="alert alert-warning">
-                    <strong> ערוך דף מידע למשתשמש</strong>
+                    <strong> ערוך דף מידע למשתמש</strong>
                 </div>
 
                 <form id="1" onSubmit={this.handleSubmit} class="row justify-content-md-center">
@@ -60,12 +61,9 @@ class Properties extends Component {
                         <div class="Card bg-white text-center card-form ">
                             <div class="card-body ">
                                 <form>
-
-
                                     <div class="form-group">
                                         <textarea id="info" class="form-control form-control-lg text-right" ref={(input) => this.input = input} placeholder="עדכן כאן מידע חדש"></textarea >
                                     </div>
-
                                     <input type="submit" value="עדכן" className="btn btn btn-info btn-sm center-block agreeBut"></input>
                                 </form>
                             </div>

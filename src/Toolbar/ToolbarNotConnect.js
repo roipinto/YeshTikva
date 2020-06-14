@@ -24,13 +24,23 @@ const toolbar = (props) => (
                     <li class="nav-item">
                         <a href="#home" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLRForm">התחברות</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/Information" class="btn btn-outline-primary">על העמותה</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/InformationForVolunteer" class="btn btn-outline-primary">מידע למתנדב</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Events" class="btn btn-outline-primary">אירועים ומפגשים</a>
+                    </li>
+
 
                 </ul>
             </div>
 
         </nav>
-        <Login/>
-        
+        <Login />
+
     </div>
 
 );

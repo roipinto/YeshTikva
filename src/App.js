@@ -35,7 +35,6 @@ class App extends Component {
 
   onDayClick = (e, day) => {
     alert('כמות משמרות');
-
   }
 
 
@@ -44,7 +43,6 @@ class App extends Component {
     return (
 
       <BrowserRouter>
-
         <div className="App">
 
           <ToolbarConnect />

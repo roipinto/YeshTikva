@@ -77,10 +77,13 @@ class Home extends Component {
 
         <div class="jumbotron-fluid " id="sentence">
           <div class="container">
-            <p class="lead">עמותת 'יש תקווה' הוקמה על מנת להעניק ליווי וסיוע לחולים, אשר נאלצים להתאשפז לתקופות ארוכות או להגיע לבדיקות וטיפולים בבתי חולים באופן תדיר.</p>
+            <p class="lead">עמותת 'יש תקווה' הוקמה על מנת להעניק ליווי וסיוע לחולים, 
+            אשר נאלצים להתאשפז לתקופות ארוכות או להגיע לבדיקות וטיפולים בבתי חולים באופן תדיר.
+            </p>
+  
 
             <a href="Join" class="btn btn-info btn-light joinbut">הרשם כמתנדב חדש</a>
-            <a href="/Information" class="btn btn-info">מידע על העמותה</a>
+            <a href="/Information" class="btn btn-info">על העמותה</a>
             <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
             <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
 
