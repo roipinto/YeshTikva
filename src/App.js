@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import firebase, { storage , auth , database } from './Firebase/Firebase';
+import firebase, { storage, auth, database } from './Firebase/Firebase';
 //import logo from './img/logo.jpg';
 import HomePage from './HomePage/HomePage.js';
 import ReactDOM from "react-dom";
@@ -63,14 +63,14 @@ class App extends Component {
   }
   logout() {
     auth.signOut();
-}
+  }
 
   onDayClick = (e, day) => {
     alert('כמות משמרות');
   }
 
-/* <Toolbar/>
-*/
+  /* <Toolbar/>
+  */
   render() {
 
     return (
@@ -78,38 +78,41 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
 
-        <Toolbar/>
+          <Toolbar />
 
-        {this.state.user ? (
-          <div>
-            
-        
-        <Switch>
-        <Route path="/EditEventsPage" component={EditEventsPage} />
-        <Route path="/ShiftDashboard" component={ShiftDashboard} />
-        <Route path="/PatientDashboard" component={PatientDashboard} />
-        <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
-        <Route path="/CoordinatorDashboard" component={CoordinatorDashboard} />
-        <Route path="/VolunteerRequestDashboard" component={VolunteerRequestDashboard} />
-        <Route path="/Statistics" component={Statistics} />
-        <Route path="/AddOrRemove" component={AddOrRemove} />
-        <Route path="/Properties" component={Properties} />
-        <Route path="/MenuPage" component={MenuPage} />
-        </Switch>
-        </div>
-      ) :
-        (
-          console.log("Not log in")
-        )}
+          {this.state.user ? (
+            <div>
+
+
+              <Switch>
+                <Route path="/EditEventsPage" component={EditEventsPage} />
+                <Route path="/ShiftDashboard" component={ShiftDashboard} />
+                <Route path="/PatientDashboard" component={PatientDashboard} />
+                <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
+                <Route path="/CoordinatorDashboard" component={CoordinatorDashboard} />
+                <Route path="/VolunteerRequestDashboard" component={VolunteerRequestDashboard} />
+                <Route path="/Statistics" component={Statistics} />
+                <Route path="/AddOrRemove" component={AddOrRemove} />
+                <Route path="/Properties" component={Properties} />
+                <Route path="/MenuPage" component={MenuPage} />
+              </Switch>
+            </div>
+          ) :
+            (
+
+              console.log("אינך מחובר!")
+            )};
+
+
 
 
           <Route exact path="/"><Redirect to="/HomePage" /> : <HomePage /></Route>
-          
+
           <Switch>
-          <Route path="/HomePage" component={HomePage} />
+            <Route path="/HomePage" component={HomePage} />
             <Route path=" " component={HomePage} />
             <Route path="/Information" component={Information} />
-            <Route path="/Join" component={Join} />            
+            <Route path="/Join" component={Join} />
             <Route path="/Events" component={Events} />
             <Route path="/InformationForVolunteer" component={InformationForVolunteer} />
             <Route path="/ContectUs" component={ContectUs} />

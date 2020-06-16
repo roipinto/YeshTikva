@@ -62,7 +62,8 @@ class ShiftDashboard extends Component {
             patient: this.input3.value,
             hospital: this.input5.value,
             volunteer: this.input4.value,
-             text: this.input7.value
+            cordintorName: 'david',
+            text: this.input7.value
 
         }
         axios.post('/shifts.json', shift).then(function (response) {
@@ -99,7 +100,7 @@ class ShiftDashboard extends Component {
                                     <div class="form-group">
                                         <input type="time" class="form-control form-control-lg text-right" placeholder="שעת סיום" required ref={(input6) => this.input6 = input6}></input>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל" required ref={(input3) => this.input3 = input3}></input>
                                     </div>

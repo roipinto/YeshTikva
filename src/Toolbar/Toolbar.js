@@ -39,7 +39,7 @@ class toolbar extends Component {
     logout(e) {
         e.preventDefault();
         auth.signOut().then(()=>{
-            return <Redirect to="/HomePage" />
+            window.location.href ="../HomePage";
         } );
         window.location.reload();
     }

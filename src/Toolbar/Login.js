@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Toolbar.css';
 import fire, { auth } from '../Firebase/Firebase';
+import { Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import HomePage from '../HomePage/HomePage.js';
+import { connect } from "react-redux";
 
 
 class Login extends Component {
@@ -21,7 +25,8 @@ class Login extends Component {
     login(e) {
         e.preventDefault();
         auth.signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-            window.location.reload();
+            window.location.href ="../MenuPage";
+
         }).catch((error) => {
             alert("אחד מהשדות שהכנסת אינו תקין");
         });
