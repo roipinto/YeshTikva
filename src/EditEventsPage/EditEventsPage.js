@@ -45,8 +45,7 @@ class EditEventsPage extends Component {
   deleteEventId = (id) => {
     const r = window.confirm("האם אתה בטוח?"); if (r == true) {
 
-      axios.delete('/events/' + id + '.json')
-        .catch(error => console.log(error)).then(function (response) {
+      axios.delete('/events/' + id + '.json').catch(error => console.log(error)).then(function (response) {
           alert('אירוע נמחק');
 
         }).then(function (response) {

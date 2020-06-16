@@ -108,13 +108,11 @@ class Shifts extends Component {
                             icon: 'delete',
                             onClick: (evt, data) =>
                             {
+                                if (window.confirm("האם אתה בטוח?") == true) {
                                 data.forEach(data1 => {
                                     axios.delete(`shifts/` + data1.id + '.json')
 
-                                });
-
-
-                           
+                                })};
                             }
 
 

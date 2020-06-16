@@ -1,7 +1,9 @@
 .btn-ctrl-panel{
     background-color: blanchedalmond;
     width: 30%;
-    font-size: 5em;
+    font-size: 2em;
     text-align: center;
     color: darkslateblue;
+    margin-left: 50px;
+    font-family: 'Secular One', sans-serif;
 }

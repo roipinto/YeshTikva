@@ -142,6 +142,7 @@ class VolunteerRequest extends Component {
                             tooltip: 'Aprove All Selected Users',
                             icon: 'check',
                             onClick: (evt, data) => {
+                                if (window.confirm("האם אתה בטוח?") == true) {
                                 data.forEach(data1 => {
                                     axios.delete(`volunteerRequests/` + data1.id + '.json'),
                                         axios.post('/volunteers.json', data1),                 
@@ -149,7 +150,7 @@ class VolunteerRequest extends Component {
                                         .then(function (response) {
                                             console.log("");
                                         });
-                                })
+                                })}
 
 
 

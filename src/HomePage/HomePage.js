@@ -6,7 +6,7 @@ import Picture4 from '../img/Picture4.jpg';
 import './HomePage.css';
 import MyTitle from '../Title';
 import Upload from '../Properties/Upload';
-import firebase, { storage } from '../Firebase/Firebase';
+import firebase, { storage, auth, database } from '../Firebase/Firebase';
 
 
 class Home extends Component {
@@ -24,6 +24,7 @@ class Home extends Component {
     this.getImage3('url3')
     this.getImage4('url4')
   }
+
 
   getImage1(image) {
     let { state } = this
@@ -66,8 +67,12 @@ class Home extends Component {
     })
   }
 
-
-
+  /*
+  <a href="/Information" class="btn btn-info">על העמותה</a>
+              <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
+              <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
+  
+              */
   render() {
     return (
       <div className="Home">
@@ -77,15 +82,14 @@ class Home extends Component {
 
         <div class="jumbotron-fluid " id="sentence">
           <div class="container">
-            <p class="lead">עמותת 'יש תקווה' הוקמה על מנת להעניק ליווי וסיוע לחולים, 
+            <div class="lead">עמותת 'יש תקווה' הוקמה על מנת להעניק ליווי וסיוע לחולים,
             אשר נאלצים להתאשפז לתקופות ארוכות או להגיע לבדיקות וטיפולים בבתי חולים באופן תדיר.
-            </p>
-  
+            </div>
+
 
             <a href="Join" class="btn btn-info btn-light joinbut">הרשם כמתנדב חדש</a>
-            <a href="/Information" class="btn btn-info">על העמותה</a>
-            <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
-            <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
+
+
 
           </div>
         </div>

@@ -1,9 +1,12 @@
-.btn-outline-primary {
-    margin-left: 50px;
+.buttLink{
+    margin-right: 15px;
     font-size: 1.30em;
     font-family: 'Secular One', sans-serif;
     text-align: right;
+    
 }
+
+
 
 #logo{
     width: 80px;

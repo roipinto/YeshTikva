@@ -1,6 +1,10 @@
-import firebase from 'firebase' 
+import * as firebase from 'firebase'
+/*
+import firebase from 'firebase'
 import 'firebase/storage';
 import 'firebase/database';
+import 'firebase/auth';
+*/
 //import firebase from "@firebase/database";
 
 
@@ -16,11 +20,11 @@ const firebaseConfig = {
   };
 const fire = firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
-
+const auth = firebase.auth();
 const database = firebase.database();
 
 export {
-    fire, storage, database as default
+    fire, auth, storage, database as default
 }
 
 

@@ -7,24 +7,39 @@ import axios from '../EditEventsPage/axios-events';
 import Coordinator from './Coordinator';
 import ToolbarConnect from '../Toolbar/ToolbarConnect';
 import MyTitle from '../Title';
+import { auth } from '../Firebase/Firebase';
 
 class CoordinatorDashboard extends Component {
-    
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
+        this.register = this.register.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     state = {
         coordinators: [],
         loading: true,
         selectedVolunteerId: null,
-        filterText: ""
-
+        filterText: "",
+        email: '',
+        password: '',
     }
 
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    register(e) {
+        e.preventDefault();
+        auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+            console.log(u); alert("d\sucesss")
+        })
+            .catch((error) => {
+                alert("המייל או הסיסמא אינם תקינים");
+            })
+    }
 
 
     componentDidMount() {
@@ -45,29 +60,25 @@ class CoordinatorDashboard extends Component {
 
     }
 
-
-
-
-
-
-
-
     handleSubmit(e) {
-        alert(' נוצר רכז חדש ');
-        const coordinator = {
-            coordinators: this.state.coordinator,
-            name: this.input.value,
-            phone: this.input2.value,
-            email: this.input3.value,
-            notes: this.input4.value
-
-        }
-        axios.post('/coordinators.json', coordinator).then(function (response) {
-            window.location.reload();
-        });
-
-
         e.preventDefault();
+        auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+            const coordinator = {
+                coordinators: this.state.coordinator,
+                name: this.input.value,
+                phone: this.input2.value,
+                email: this.input3.value,
+                notes: this.input4.value
+
+            }
+            axios.post('/coordinators.json', coordinator).then(function (response) {
+                window.location.reload();
+            })
+        }).then((e) => {
+            alert(' נוצר רכז חדש ');
+        }).catch((error) => {
+            alert("המייל או הסיסמא אינם תקינים");
+        });
     }
 
 
@@ -89,18 +100,21 @@ class CoordinatorDashboard extends Component {
 
                                 <form>
                                     <div class="form-group">
+                                        <input required value={this.state.email} onChange={this.handleChange} class="form-control form-control-lg text-right" type="email" name="email" class="form-control" id="mailRegister" aria-describedby="emailHelp" placeholder="example@google.com " ref={(input3) => this.input3 = input3} />
+                                    </div>
+                                    <div class="form-group">
+                                        <input required id="exampleInputPassword1" value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4} aria-describedby="emailHelp" placeholder="Password"></input>
+                                    </div>
+                                    <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="טלפון" ref={(input2) => this.input2 = input2}></input>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-lg text-right" placeholder="example@google.com " ref={(input3) => this.input3 = input3}></input>
-                                    </div>
+
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4}></input>
                                     </div>
-
 
                                     <input type="submit" value=" הוסף רכז חדש " className="btn btn btn-info btn-sm center-block agreeBut"></input>
                                 </form>

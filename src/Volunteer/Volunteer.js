@@ -138,10 +138,11 @@ class Volunteer extends Component {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
                             onClick: (evt, data) => {
+                                if (window.confirm("האם אתה בטוח?") == true) {
                                 data.forEach(data1 => {
 
                                     axios.delete(`volunteers/` + data1.id + '.json')
-                                });
+                                })};
 
                                  //axios.delete(`volunteers/` + data[0].id + '.json'),
 

@@ -3,11 +3,24 @@ import React from 'react';
 import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import './Toolbar.css';
+import { Component } from 'react';
+import { auth } from '../Firebase/Firebase';
 
-const toolbar = (props) => (
+
+class ToolbarCon extends Component {
+    constructor(props) {
+        super(props);
+        this.logout  = this.logout.bind(this);
+    }
+
+logout() {
+    auth.signOut();
+}
+
+
+render() {
+    return (
     <div>
-
-
         <nav class="navbar navbar-expand-lg navbar-light" >
             <Link to=''>
                 <img src={logo} id="logo" alt=""></img>
@@ -28,13 +41,16 @@ const toolbar = (props) => (
                     <li class="nav-item">
                         <div class="btn btn-outline-primary disabled" data-toggle="modal" >ברוך הבא!</div>
                     </li>
+                    <li class="nav-item">
+                        <div class="btn btn-outline-primary" onClick={this.logout}>התנתק</div>
+                    </li>
                 </ul>
             </div>
 
         </nav>
 
     </div>
-
 );
-
-export default toolbar;
+}
+}
+export default ToolbarCon;
