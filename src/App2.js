@@ -18,8 +18,7 @@ import VolunteerDashboard from './Volunteer/VolunteerDashboard';
 import VolunteerRequestDashboard from './VolunteerRequest/VolunteerRequestDashboard';
 import Join from './Join/Join';
 import Statistics from './Statistics/Statistics';
-import ToolbarUser from './Toolbar/ToolbarUser';
-import ToolbarVol from './Toolbar/ToolbarVol';
+import Toolbar from './Toolbar/Toolbar';
 import InformationForVolunteer from './InformationForVolunteer/InformationForVolunteer';
 import ContectUs from './ContectUs/ContectUs';
 import Properties from './Properties/Properties';
@@ -55,13 +54,14 @@ class App extends Component {
   funcs() {
     let a = this.authListener();
     let b = this.checkRole();
-    if (a === b && a === 'true') {
+    if (a === b && a === 'true')
+    {
       this.setState(state => {
         state.loading = true;
         return state;
       });
     }
-    return 'true';
+      return 'true';
   }
 
   checkRole() {
@@ -92,12 +92,11 @@ class App extends Component {
         }
         else {
           const email = 'volunteer';
-
-          this.setState(state => {
-            state.role = 'vol';
-            return state;
-          });
         }
+        this.setState(state => {
+          state.role = 'vol';
+          return state;
+        });
         return 'true';
       });
     });
@@ -135,7 +134,6 @@ class App extends Component {
             <div>
               {this.state.role === 'adm' ? (
                 <div>
-                  <ToolbarUser />
 
                   <Route path="/MenuPage" component={MenuPage} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
@@ -147,40 +145,38 @@ class App extends Component {
                   <Route path="/CoordinatorDashboard" component={CoordinatorDashboard} />
                   <Route path="/VolunteerRequestDashboard" component={VolunteerRequestDashboard} />
                 </div>
-              ) : (<div></div>)}
+              ) : ( <div></div>)}
 
-              {this.state.role === 'coor' ? (
-                <div>
-                  <ToolbarUser welcome="ברוך הבא 5"/>
-                  <Route path="/MenuPage" component={MenuPage} />
-                  <Route path="/ShiftDashboard" component={ShiftDashboard} />
-                  <Route path="/EditEventsPage" component={EditEventsPage} />
-                  <Route path="/PatientDashboard" component={PatientDashboard} />
-                  <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
+                    {this.state.role === 'coor' ? (
+                      <div>
+                        <Route path="/MenuPage" component={MenuPage} />
+                        <Route path="/ShiftDashboard" component={ShiftDashboard} />
+                        <Route path="/EditEventsPage" component={EditEventsPage} />
+                        <Route path="/PatientDashboard" component={PatientDashboard} />
+                        <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
 
-                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
-                </div>
-              ) : (<div></div>)}
-              {this.state.role === 'vol' ? (
-                <div>
-                  <ToolbarVol welcome="ברוך הבא 6"/>
-                  <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/PatientDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerDashboard"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                      </div>
+                    ) : (<div></div>)}
+                      {this.state.role === 'vol' ? (
+                      <div>
+                        <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/PatientDashboard"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/VolunteerDashboard"><Redirect to="/HomePage" /></Route>
 
-                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
-                </div>
-              ) : (<div></div>)}
+                        <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                        <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                      </div>
+                    ) : (<div></div>)}
 
 
 
-              
+              <Toolbar />
 
               <Route exact path="/"><Redirect to="/HomePage" /></Route>
 

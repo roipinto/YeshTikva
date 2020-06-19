@@ -44,11 +44,6 @@ class ShiftDashboard extends Component {
 
 
 
-
-
-
-
-
     handleSubmit(e) {
         alert(' משמרת חדשה נוצרה ');
         const shift = {
