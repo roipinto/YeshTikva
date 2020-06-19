@@ -3,26 +3,23 @@ import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import Shifts from './Shifts';
 import MyTitle from '../Title';
-
+import firebase from '../Firebase/Firebase';
 
 
 class ShiftDashboard extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
     }
 
     state = {
         shifts: [],
         loading: true,
         selectedVolunteerId: null,
-        filterText: ""
-
+        filterText: "",
     }
 
 
@@ -62,7 +59,9 @@ class ShiftDashboard extends Component {
             patient: this.input3.value,
             hospital: this.input5.value,
             volunteer: this.input4.value,
-            cordintorName: 'david',
+            patientname: this.input8.value,
+            volunteername: this.input9.value,
+            cordintorName: firebase.auth().currentUser.email,
             text: this.input7.value
 
         }
@@ -102,10 +101,20 @@ class ShiftDashboard extends Component {
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל" required ref={(input3) => this.input3 = input3}></input>
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מטופל"  required ref={(input8) => this.input8 = input8}></input>
                                     </div>
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מתנדב" ref={(input4) => this.input4 = input4}></input>
+                                        <input type="tel" class="form-control form-control-lg text-right" required placeholder="טלפון מטופל בפורמט הבא: 0523456789" pattern="[0-9]{10}" required ref={(input3) => this.input3 = input3}></input>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-lg text-right" placeholder="מתנדב" required ref={(input9) => this.input9 = input9}></input>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input type="tel" class="form-control form-control-lg text-right" required placeholder="טלפון מתנדב בפורמט הבא: 0523456789" pattern="[0-9]{10}" ref={(input4) => this.input4 = input4}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" placeholder="בית חולים" required ref={(input5) => this.input5 = input5}></input>

@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import database from '../Firebase/Firebase';
 
 
@@ -21,7 +21,7 @@ class Volunteer extends Component {
 
 
     componentDidMount() {
-        const itemsRef = database.ref(`volunteers/`);
+        const itemsRef = firebase.database().ref(`volunteers/`);
         itemsRef.on('value', (snapshot) => {
             let volunteers = snapshot.val();
             let newState = [];
@@ -171,7 +171,31 @@ class Volunteer extends Component {
                                             name: newData.name,
                                             zehot: newData.zehot,
                                             age: newData.age,
-                                            hospital: newData.hospital,
+                                            email: newData.email,
+                                            gender: newData.gender,
+                                            sector: newData.sector,
+                                            status: newData.status,
+                                            address: newData.address,
+                                            phone: newData.phone,
+
+                                            age: newData.age,
+                                            backround: newData.backround,
+                                            sickness: newData.sickness,
+                                            immunization: newData.immunization,
+                                            howGetToUs: newData.howGetToUs,
+
+                                            areaVolunteering: newData.areaVolunteering,
+                                            typeVolunteering: newData.typeVolunteering,
+                                            timeVolunteering: newData.timeVolunteering,
+                                            experience: newData.experience,
+                                            notes: newData.notes,
+                                            update: newData.update,
+                                            howSubmitted: newData.howSubmitted,
+
+
+
+
+                                           /* 
                                             department: newData.department,
                                             roomNumber: newData.roomNumber,
                                             placeInRoom: newData.placeInRoom,
@@ -191,7 +215,7 @@ class Volunteer extends Component {
                                             hospitalizationReason: newData.hospitalizationReason,
                                             familyBackround: newData.familyBackround,
                                             notes: newData.notes,
-
+                                            */
 
 
                                         }

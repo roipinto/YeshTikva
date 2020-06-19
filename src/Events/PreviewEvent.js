@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../img/logo.jpg';
 import {Link} from 'react-router-dom';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import './Event.css';
 const event = (props) => (
    

@@ -3,11 +3,11 @@ import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import VolunteerRequest from '../VolunteerRequest/VolunteerRequest';
 import emailjs from 'emailjs-com';
 //import firebase from '../Firebase/Firebase';
-import database from '../Firebase/Firebase';
+import firebase from '../Firebase/Firebase';
 import './Join.css';
 import MyTitle from '../Title';
 import SecondaryTitle from '../SecondaryTitle'
@@ -94,7 +94,7 @@ class VolunteerRequestDashboard extends Component {
         }
         axios.post('/volunteerRequests.json', volunteerRequest)
 
-        const itemsRef = database.ref(`volunteerRequests/`);
+        const itemsRef = firebase.database().ref(`volunteerRequests/`);
         //console.log(itemsRef)
         let x = 0;
         itemsRef.on("child_added", snap => {
@@ -208,7 +208,7 @@ class VolunteerRequestDashboard extends Component {
                             <div class="card-body">
                              
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="טלפון" ref={(input8) => this.input8 = input8}></input>
+                                    <input type="tel" class="form-control form-control-lg text-right" required placeholder= "טלפון בפורמט הבא: 0523456789" pattern="[0-9]{10}" ref={(input8) => this.input8 = input8}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="number" class="form-control form-control-lg text-right" required required placeholder="גיל" ref={(input9) => this.input9 = input9}></input>

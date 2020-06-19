@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import firebase, { storage, auth, database } from './Firebase/Firebase';
+import firebase from './Firebase/Firebase';
+
 //import logo from './img/logo.jpg';
 import HomePage from './HomePage/HomePage.js';
 import ReactDOM from "react-dom";
@@ -17,17 +18,13 @@ import VolunteerDashboard from './Volunteer/VolunteerDashboard';
 import VolunteerRequestDashboard from './VolunteerRequest/VolunteerRequestDashboard';
 import Join from './Join/Join';
 import Statistics from './Statistics/Statistics';
-import ToolbarNotConnect from './Toolbar/ToolbarNotConnect';
-import ToolbarConnect from './Toolbar/ToolbarConnect';
-import Toolbar from './Toolbar/Toolbar';
+import ToolbarUser from './Toolbar/ToolbarUser';
+import ToolbarVol from './Toolbar/ToolbarVol';
 import InformationForVolunteer from './InformationForVolunteer/InformationForVolunteer';
 import ContectUs from './ContectUs/ContectUs';
-import AddOrRemove from './AddOrRemove/AddOrRemove';
 import Properties from './Properties/Properties';
-import Upload from './Properties/Upload';
 import './App.css';
 import { Redirect } from 'react-router-dom'
-import Home from './HomePage/HomePage.js';
 //import firebase from './Firebase/Firebase';
 
 const style = {
@@ -39,18 +36,75 @@ const style = {
 class App extends Component {
   constructor() {
     super();
-    this.state = ({
+    this.state = {
       user: null,
-    });
+      loading: null,
+      role: null,
+    }
     this.authListener = this.authListener.bind(this);
     this.logout = this.logout.bind(this);
+    this.checkRole = this.checkRole.bind(this);
+    this.funcs = this.funcs.bind(this);
+
   }
+
   componentDidMount() {
-    this.authListener();
+    this.state.loading = this.funcs();
+  }
+
+  funcs() {
+    let a = this.authListener();
+    let b = this.checkRole();
+    if (a === b && a === 'true') {
+      this.setState(state => {
+        state.loading = true;
+        return state;
+      });
+    }
+    return 'true';
+  }
+
+  checkRole() {
+    let retVal = null;
+    const myData = firebase.database().ref('coordinators').on('value', (snapshot) => {
+      let coordinators = snapshot.val();
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          let email = user.email;
+          for (let coordinator in coordinators) {
+            if (coordinators[coordinator].email === email) {
+              if (coordinators[coordinator].role === 'admin') {
+                retVal = 'adm';
+              }
+              else if (coordinators[coordinator].role === 'coordinator') {
+                retVal = 'coor';
+              }
+              else {
+                retVal = 'vol';
+              }
+              this.setState(state => {
+                state.role = retVal;
+                return state;
+              });
+              break;
+            }
+          }
+        }
+        else {
+          const email = 'volunteer';
+
+          this.setState(state => {
+            state.role = 'vol';
+            return state;
+          });
+        }
+        return 'true';
+      });
+    });
   }
 
   authListener() {
-    auth.onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       console.log(user);
       if (user) {
         this.setState({ user });
@@ -62,68 +116,99 @@ class App extends Component {
     });
   }
   logout() {
-    auth.signOut();
+    firebase.auth().signOut();
+
   }
 
   onDayClick = (e, day) => {
     alert('כמות משמרות');
   }
 
-  /* <Toolbar/>
-  */
-  render() {
 
+  render() {
     return (
+
 
       <BrowserRouter>
         <div className="App">
-
-          <Toolbar />
-
-          {this.state.user ? (
+          {this.state.loading ? (
             <div>
+              {this.state.role === 'adm' ? (
+                <div>
+                  <ToolbarUser />
 
+                  <Route path="/MenuPage" component={MenuPage} />
+                  <Route path="/ShiftDashboard" component={ShiftDashboard} />
+                  <Route path="/EditEventsPage" component={EditEventsPage} />
+                  <Route path="/PatientDashboard" component={PatientDashboard} />
+                  <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
+
+                  <Route path="/Properties" component={Properties} />
+                  <Route path="/CoordinatorDashboard" component={CoordinatorDashboard} />
+                  <Route path="/VolunteerRequestDashboard" component={VolunteerRequestDashboard} />
+                </div>
+              ) : (<div></div>)}
+
+              {this.state.role === 'coor' ? (
+                <div>
+                  <ToolbarUser />
+                  <Route path="/MenuPage" component={MenuPage} />
+                  <Route path="/ShiftDashboard" component={ShiftDashboard} />
+                  <Route path="/EditEventsPage" component={EditEventsPage} />
+                  <Route path="/PatientDashboard" component={PatientDashboard} />
+                  <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
+
+                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                </div>
+              ) : (<div></div>)}
+              {this.state.role === 'vol' ? (
+                <div>
+                  <ToolbarVol />
+                  <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/PatientDashboard"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/VolunteerDashboard"><Redirect to="/HomePage" /></Route>
+
+                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                </div>
+              ) : (<div></div>)}
+
+
+
+              
+
+              <Route exact path="/"><Redirect to="/HomePage" /></Route>
 
               <Switch>
-                <Route path="/EditEventsPage" component={EditEventsPage} />
-                <Route path="/ShiftDashboard" component={ShiftDashboard} />
-                <Route path="/PatientDashboard" component={PatientDashboard} />
-                <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
-                <Route path="/CoordinatorDashboard" component={CoordinatorDashboard} />
-                <Route path="/VolunteerRequestDashboard" component={VolunteerRequestDashboard} />
+                <Route path="/HomePage" component={HomePage} />
+                <Route path=" " component={HomePage} />
+                <Route path="/Information" component={Information} />
+                <Route path="/Join" component={Join} />
+                <Route path="/Events" component={Events} />
+                <Route path="/InformationForVolunteer" component={InformationForVolunteer} />
+                <Route path="/ContectUs" component={ContectUs} />
+
                 <Route path="/Statistics" component={Statistics} />
-                <Route path="/AddOrRemove" component={AddOrRemove} />
-                <Route path="/Properties" component={Properties} />
-                <Route path="/MenuPage" component={MenuPage} />
+
               </Switch>
+
+
+
             </div>
-          ) :
-            (
+          ) : (
 
-              console.log("אינך מחובר!")
-            )};
-
-
-
-
-          <Route exact path="/"><Redirect to="/HomePage" /> : <HomePage /></Route>
-
-          <Switch>
-            <Route path="/HomePage" component={HomePage} />
-            <Route path=" " component={HomePage} />
-            <Route path="/Information" component={Information} />
-            <Route path="/Join" component={Join} />
-            <Route path="/Events" component={Events} />
-            <Route path="/InformationForVolunteer" component={InformationForVolunteer} />
-            <Route path="/ContectUs" component={ContectUs} />
-
-          </Switch>
-
+              <div>Loading...</div>
+            )
+          }
         </div>
-      </BrowserRouter>
-
-
+      </BrowserRouter >
     );
+
   }
 }
 

@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import Volunteer from './Volunteer';
 import MyTitle from '../Title';
 

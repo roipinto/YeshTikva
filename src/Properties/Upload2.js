@@ -1,16 +1,11 @@
-﻿//const React = require('react')
-//import React, { Component } from 'react';
-import React, { useState } from "react";
-//import firebase from '../Firebase/Firebase';
-//import storage from '../Firebase/Firebase';
-import axios from '../EditEventsPage/axios-events';
-import firebase, { storage } from '../Firebase/Firebase';
-import database from '../Firebase/Firebase';
+﻿import React, { useState } from "react";
+import axios from '../Firebase/axios';
+import firebase from '../Firebase/Firebase';
 
 
 const ReactFirebaseFileUpload2 = () => {
 
-    var storageRef = storage.ref("images/");
+    var storageRef = firebase.storage().ref("images/");
     storageRef.listAll().then(function (result) {
         result.items.forEach(function (imageRef) {
             // And finally display them
@@ -42,7 +37,7 @@ const ReactFirebaseFileUpload2 = () => {
             return;
         }
 
-        const uploadTask = storage.ref(`images/2.JPG`).put(image);
+        const uploadTask = firebase.storage().ref(`images/2.JPG`).put(image);
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -55,7 +50,7 @@ const ReactFirebaseFileUpload2 = () => {
                 console.log(error);
             },
             () => {
-                storage
+                firebase.storage()
                     .ref("images")
                     .child(image.name)
                     .getDownloadURL()
@@ -67,7 +62,7 @@ const ReactFirebaseFileUpload2 = () => {
         );
     };
     const handleClick1 = () => {
-        var storageRef = storage.ref("images/");
+        var storageRef = firebase.storage().ref("images/");
         storageRef.listAll().then(function (result) {
             result.items.forEach(function (imageRef) {
                 // And finally display them
@@ -80,7 +75,7 @@ const ReactFirebaseFileUpload2 = () => {
     function displayImage1(imageRef) {
         imageRef.getDownloadURL().then(function (url) {
             console.log(imageRef.name);
-            storage
+            firebase.storage()
                 .ref("images")
                 .child("2.JPG")
                 .getDownloadURL()
@@ -93,7 +88,7 @@ const ReactFirebaseFileUpload2 = () => {
 
     function handleDelete() {
         console.log("delete")
-        var storageRef = storage.ref("images/");
+        var storageRef = firebase.storage().ref("images/");
         var desertRef = storageRef.child('2.JPG');
         desertRef.delete().then(function () {
             window.location.reload();

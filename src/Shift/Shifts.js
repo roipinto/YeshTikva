@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import database from '../Firebase/Firebase';
 import emailjs from 'emailjs-com';
 import CoordinatorDashboard from '../Coordinator/CoordinatorDashboard';
@@ -22,7 +22,7 @@ class Shifts extends Component {
 
 
     componentDidMount() {
-        const itemsRef = database.ref(`shifts/`);
+        const itemsRef = firebase.database().ref(`shifts/`);
         itemsRef.on('value', (snapshot) => {
             let shifts = snapshot.val();
             let newState = [];
@@ -32,7 +32,9 @@ class Shifts extends Component {
                     date: shifts[shift].date,
                     starttime: shifts[shift].starttime,
                     endtime: shifts[shift].endtime,
+                    patientname: shifts[shift].patientname,
                     patient: shifts[shift].patient,
+                    volunteername: shifts[shift].volunteername,
                     volunteer: shifts[shift].volunteer,
                     hospital: shifts[shift].hospital,
                     text: shifts[shift].text,
@@ -87,11 +89,13 @@ class Shifts extends Component {
                         { title: "תאריך", field: 'date' },
                         { title: "שעת התחלה", field: 'starttime' },
                         { title: "שעת סיום", field: 'endtime' },
-                        { title: "מטופל", field: 'patient' },
-                        { title: "מתנדב", field: 'volunteer' },
+                        { title: "מטופל", field: 'patientname' },
+                        { title: "טלפון מטופל", field: 'patient' },
+                        { title: "מתנדב", field: 'volunteername' },
+                        { title: "טלפון מתנדב", field: 'volunteer' },
                         { title: "בית חולים", field: 'hospital' },
                         { title: "הודעה למתנדב במייל", field: 'text' },
-                        { title: "שם הרכז ההלא", field: 'cordintorName'}
+                        { title: "שם הרכז האחרי", field: 'cordintorName'}
 
 
 
@@ -130,14 +134,14 @@ class Shifts extends Component {
 
                                 var x = data[0].starttime;
                                 var y = data[0].endtime;
-                                var t = data[0].patient;
+                                var t = data[0].patientname;
                                 var z = data[0].hospital;
                                 var k = data[0].text;
-                                var d = data[0].volunteer;
+                                var d = data[0].volunteername;
                                 var n = data[0].cordintorName;
 
 
-                                var ref = database.ref('volunteers/').orderByChild("name").equalTo(data[0].volunteer)
+                                var ref = firebase.database().ref('volunteers/').orderByChild("phone").equalTo(data[0].volunteer)
                                     .on('value', snapshot => {
                                         snapshot.forEach(userSnapshot => {
                                             let data = userSnapshot.val();
@@ -153,7 +157,7 @@ class Shifts extends Component {
                                         });
                                     });
 
-                                var ref = database.ref('patients/').orderByChild("name").equalTo(data[0].patient)
+                                var ref = firebase.database().ref('patients/').orderByChild("contact").equalTo(data[0].patient)
                                     .on('value', snapshot => {
                                         snapshot.forEach(userSnapshot => {
                                             let data = userSnapshot.val();
@@ -198,7 +202,9 @@ class Shifts extends Component {
                                             date: newData.date,
                                             starttime: newData.starttime,
                                             endtime: newData.endtime,
+                                            patientname: newData.patientname,
                                             patient: newData.patient,
+                                            volunteername: newData.volunteername,
                                             volunteer: newData.volunteer,
                                             hospital: newData.hospital,
                                             cordintorName :newData.cordintorName,

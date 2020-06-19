@@ -1,8 +1,7 @@
 ﻿import React, { Component } from 'react';
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
-import axios from '../EditEventsPage/axios-events';
-import database from '../Firebase/Firebase';
+import axios from '../Firebase/axios';
 
 
 class Patient extends Component {
@@ -21,7 +20,7 @@ class Patient extends Component {
 
 
     componentDidMount() {
-        const itemsRef = database.ref(`patients/`);
+        const itemsRef = firebase.database().ref(`patients/`);
         itemsRef.on('value', (snapshot) => {
             let patients = snapshot.val();
             let newState = [];

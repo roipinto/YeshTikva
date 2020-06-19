@@ -3,7 +3,7 @@ import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import Patient from './Patient';
 import MyTitle from '../Title';
 
@@ -140,7 +140,7 @@ class PatientDashboard extends Component {
                             <div class="card-body">
                               
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg text-right" required placeholder="איש קשר - שם וטלפון" ref={(input8) => this.input8 = input8}></input>
+                                    <input type="tel" class="form-control form-control-lg text-right" required placeholder="טלפון בפורמט הבא: 0523456789" pattern="[0-9]{10}"  ref={(input8) => this.input8 = input8}></input>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg text-right" required placeholder="איש קשר - אמייל" ref={(input22) => this.input22 = input22}></input>

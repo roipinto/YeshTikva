@@ -3,7 +3,7 @@ import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import VolunteerRequest from './VolunteerRequest';
 import MyTitle from '../Title';
 import SecondaryTitle from '../SecondaryTitle'

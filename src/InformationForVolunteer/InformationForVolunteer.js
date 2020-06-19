@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MyTitle from '../Title';
-import firebase, { storage } from '../Firebase/Firebase'; 
+import firebase from '../Firebase/Firebase'; 
 import './InformationForVolunteer.css';
 import SecondaryTitle from '../SecondaryTitle'
 
@@ -20,7 +20,7 @@ class Home extends Component {
 
     getImage1(image) {
         let { state } = this
-        storage.ref("images/").child('Rules.docx').getDownloadURL().then((url) => {
+        firebase.storage().ref("images/").child('Rules.docx').getDownloadURL().then((url) => {
             state[image] = url
             this.setState(state)
         }).catch((error) => {
@@ -31,7 +31,7 @@ class Home extends Component {
 
     getImage2(image) {
         let { state } = this
-        storage.ref("images/").child('Presentation.pptx').getDownloadURL().then((url) => {
+        firebase.storage().ref("images/").child('Presentation.pptx').getDownloadURL().then((url) => {
             state[image] = url
             this.setState(state)
         }).catch((error) => {

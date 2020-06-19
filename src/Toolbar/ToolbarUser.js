@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Toolbar.css';
 import Login from './Login';
 import App from '../App'
-import { auth } from '../Firebase/Firebase';
+import firebase from '../Firebase/Firebase';
 import { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
@@ -25,7 +25,7 @@ class toolbar extends Component {
     }
 
     authListener() {
-        auth.onAuthStateChanged((user) => {
+        firebase.auth().onAuthStateChanged((user) => {
             console.log(user);
             if (user) {
                 this.setState({ user });
@@ -38,9 +38,9 @@ class toolbar extends Component {
     }
     logout(e) {
         e.preventDefault();
-        auth.signOut().then(()=>{
-            window.location.href ="../HomePage";
-        } );
+        firebase.auth().signOut().then(() => {
+            window.location.href = "../HomePage";
+        });
         window.location.reload();
     }
 
@@ -72,30 +72,22 @@ class toolbar extends Component {
                                 <a href="/Events" class="btn btn-outline-dark buttLink">אירועים ומפגשים</a>
                             </li>
 
-                            {this.state.user ? (
-                                <div class="btnLogin">
-                                    
-                                
-                                <li class="nav-item">
-                                    <a href="/MenuPage" class="btn btn-outline-primary buttLink btnLogin">לוח בקרה למשתמש</a>
-                                    <div class="btn btn-outline-secondary buttLink disabled btnLogin" data-toggle="modal" >ברוך הבא!</div>
-                                    <div class="btn btn-outline-danger buttLink" onClick={this.logout}>התנתק</div>
-                                </li>
-                                </div>
-                            ) :
-                                (
-                                    <li class="nav-item">
-                                        <a href="#home" class="btn btn-outline-warning buttLink Logged-out" data-toggle="modal" data-target="#modalLRForm">התחברות</a>
-                                        
-                                    </li>
+                            <li class="nav-item">
+                                <a href="/MenuPage" class="btn btn-outline-primary buttLink btnLogin">לוח בקרה למשתמש</a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn btn-outline-secondary buttLink disabled btnLogin" data-toggle="modal" >ברוך הבא!</div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn btn-outline-danger buttLink" onClick={this.logout}>התנתק</div>
+                            </li>
 
-                                )}
+
 
                         </ul>
                     </div>
 
                 </nav>
-                <Login />
             </div>
         );
     }

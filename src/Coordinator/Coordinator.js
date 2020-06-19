@@ -1,8 +1,7 @@
 ﻿import React, { Component } from 'react';
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
-import axios from '../EditEventsPage/axios-events';
-import database from '../Firebase/Firebase';
+import axios from '../Firebase/axios';
 
 
 class Coordinator extends Component {
@@ -21,7 +20,7 @@ class Coordinator extends Component {
 
 
     componentDidMount() {
-        const itemsRef = database.ref(`coordinators/`);
+        const itemsRef = firebase.database().ref(`coordinators/`);
         itemsRef.on('value', (snapshot) => {
             let coordinators = snapshot.val();
             let newState = [];
@@ -31,7 +30,8 @@ class Coordinator extends Component {
                     name: coordinators[coordinator].name,
                     phone: coordinators[coordinator].phone,
                     email: coordinators[coordinator].email,
-                    notes: coordinators[coordinator].notes
+                    notes: coordinators[coordinator].notes,
+                    role: coordinators[coordinator].role
                 });
             }
             this.setState({
@@ -68,7 +68,9 @@ class Coordinator extends Component {
                         { title: "שם מלא", field: 'name' },
                         { title: "טלפון", field: 'phone' },
                         { title: "מייל", field: 'email' },
-                        { title: "הערות", field: 'notes' }
+                        { title: "הערות", field: 'notes' },
+                        { title: "הרשאות", field: 'role' }
+                        
                        
 
                     ]}
@@ -114,7 +116,8 @@ class Coordinator extends Component {
                                             name: newData.name,
                                             phone: newData.phone,
                                             email: newData.email,
-                                            notes: newData.notes
+                                            notes: newData.notes,
+                                            role: newData.role
                                             
                                         }
                                         axios.put(`coordinators/` + newData.id + '.json', coordinator)

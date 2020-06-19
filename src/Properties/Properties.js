@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyTitle from '../Title';
 import './Properties.css';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 
 import ReactFirebaseFileUpload1 from './Upload';
 import ReactFirebaseFileUpload2 from './Upload2';

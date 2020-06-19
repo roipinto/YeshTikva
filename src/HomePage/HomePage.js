@@ -6,7 +6,7 @@ import Picture4 from '../img/Picture4.jpg';
 import './HomePage.css';
 import MyTitle from '../Title';
 import Upload from '../Properties/Upload';
-import firebase, { storage, auth, database } from '../Firebase/Firebase';
+import firebase from '../Firebase/Firebase';
 
 
 class Home extends Component {
@@ -28,7 +28,7 @@ class Home extends Component {
 
   getImage1(image) {
     let { state } = this
-    storage.ref("images/").child('1.JPG').getDownloadURL().then((url) => {
+    firebase.storage().ref("images/").child('1.JPG').getDownloadURL().then((url) => {
       state[image] = url
       this.setState(state)
     }).catch((error) => {
@@ -38,7 +38,7 @@ class Home extends Component {
 
   getImage2(image) {
     let { state } = this
-    storage.ref("images/").child('2.JPG').getDownloadURL().then((url) => {
+    firebase.storage().ref("images/").child('2.JPG').getDownloadURL().then((url) => {
       state[image] = url
       this.setState(state)
     }).catch((error) => {
@@ -49,7 +49,7 @@ class Home extends Component {
 
   getImage3(image) {
     let { state } = this
-    storage.ref("images/").child('3.JPG').getDownloadURL().then((url) => {
+    firebase.storage().ref("images/").child('3.JPG').getDownloadURL().then((url) => {
       state[image] = url
       this.setState(state)
     }).catch((error) => {
@@ -59,7 +59,7 @@ class Home extends Component {
 
   getImage4(image) {
     let { state } = this
-    storage.ref("images/").child('4.JPG').getDownloadURL().then((url) => {
+    firebase.storage().ref("images/").child('4.JPG').getDownloadURL().then((url) => {
       state[image] = url
       this.setState(state)
     }).catch((error) => {

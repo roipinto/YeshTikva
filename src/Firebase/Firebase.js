@@ -19,13 +19,9 @@ const firebaseConfig = {
     measurementId: "G-QX3EMS8ELV"
   };
 const fire = firebase.initializeApp(firebaseConfig);
-const storage = firebase.storage();
-const auth = firebase.auth();
-const database = firebase.database();
 
-export {
-    fire, auth, storage, database as default
-}
+
+export default fire;
 
 
 

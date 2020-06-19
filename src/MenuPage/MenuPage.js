@@ -17,22 +17,20 @@ class MenuPage extends Component {
         </section>
 
         <section id="boxes" class="py-3">
-        <a href="PatientDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מטופלים</a>
-        <a href="VolunteerDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מתנדבים</a>
+          <a href="PatientDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מטופלים</a>
+          <a href="VolunteerDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח מתנדבים</a>
         </section>
 
 
         <section id="boxes" class="py-3">
-        <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
-        <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel btttt">בקשות התנדבות</a>
+          <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
+          <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel btttt">בקשות התנדבות</a>
         </section>
 
 
 
         <section id="boxes" class="py-3">
-
-        <a href="AddOrRemove" class="btn btn-outline-primary btn-ctrl-panel">הוסף או הסר משתמש</a>
-        <a href="Properties" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>
+          <a href="Properties" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>
         </section>
 
 

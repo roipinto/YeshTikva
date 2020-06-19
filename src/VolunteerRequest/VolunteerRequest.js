@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
-import axios from '../EditEventsPage/axios-events';
+import axios from '../Firebase/axios';
 import emailjs from 'emailjs-com';
 import database from '../Firebase/Firebase';
 
@@ -22,7 +22,7 @@ class VolunteerRequest extends Component {
 
 
     componentDidMount() {
-        const itemsRef = database.ref(`volunteerRequests/`);
+        const itemsRef = firebase.database().ref(`volunteerRequests/`);
         itemsRef.on('value', (snapshot) => {
             let volunteerRequests = snapshot.val();
             let newState = [];

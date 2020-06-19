@@ -1,16 +1,10 @@
-﻿//const React = require('react')
-//import React, { Component } from 'react';
-import React, { useState } from "react";
-//import firebase from '../Firebase/Firebase';
-//import storage from '../Firebase/Firebase';
-import axios from '../EditEventsPage/axios-events';
-import firebase, { storage } from '../Firebase/Firebase';
-import database from '../Firebase/Firebase';
+﻿import React, { useState } from "react";
+import firebase from '../Firebase/Firebase'; 
 
 
 const Files2 = () => {
 
-    var storageRef = storage.ref("images/");
+    var storageRef = firebase.storage().ref("images/");
     storageRef.listAll().then(function (result) {
         result.items.forEach(function (imageRef) {
             // And finally display them
@@ -42,7 +36,7 @@ const Files2 = () => {
             return;
         }
 
-        const uploadTask = storage.ref(`images/Presentation.pptx`).put(image);
+        const uploadTask = firebase.storage().ref(`images/Presentation.pptx`).put(image);
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -55,7 +49,7 @@ const Files2 = () => {
                 console.log(error);
             },
             () => {
-                storage
+                firebase.storage()
                     .ref("images")
                     .child(image.name)
                     .getDownloadURL()
@@ -67,7 +61,7 @@ const Files2 = () => {
         );
     };
     const handleClick1 = () => {
-        var storageRef = storage.ref("images/");
+        var storageRef = firebase.storage().ref("images/");
         storageRef.listAll().then(function (result) {
             result.items.forEach(function (imageRef) {
                 // And finally display them
@@ -80,7 +74,7 @@ const Files2 = () => {
     function displayImage1(imageRef) {
         imageRef.getDownloadURL().then(function (url) {
             console.log(imageRef.name);
-            storage
+            firebase.storage()
                 .ref("images")
                 .child("Presentation.pptx")
                 .getDownloadURL()
@@ -93,7 +87,7 @@ const Files2 = () => {
 
     function handleDelete() {
         console.log("delete")
-        var storageRef = storage.ref("images/");
+        var storageRef = firebase.storage().ref("images/");
         var desertRef = storageRef.child('Presentation.pptx');
         desertRef.delete().then(function () {
             window.location.reload();

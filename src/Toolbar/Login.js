@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Toolbar.css';
-import fire, { auth } from '../Firebase/Firebase';
+import firebase from '../Firebase/Firebase';
 import { Redirect } from 'react-router-dom'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from '../HomePage/HomePage.js';
@@ -24,7 +24,7 @@ class Login extends Component {
 
     login(e) {
         e.preventDefault();
-        auth.signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
             window.location.href ="../MenuPage";
 
         }).catch((error) => {
@@ -34,7 +34,7 @@ class Login extends Component {
 
     forgetPassword(e) {
         e.preventDefault();
-        auth.sendPasswordResetEmail(this.state.email).then(function () {
+        firebase.auth().sendPasswordResetEmail(this.state.email).then(function () {
             alert("נשלח אליך מייל לשחזור סיסמא");
         }).then(function (response) {
             window.location.reload();
