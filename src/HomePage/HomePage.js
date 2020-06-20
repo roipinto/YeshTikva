@@ -67,12 +67,6 @@ class Home extends Component {
     })
   }
 
-  /*
-  <a href="/Information" class="btn btn-info">על העמותה</a>
-              <a href="/InformationForVolunteer" class="btn btn-info">מידע למתנדב</a>
-              <a href="/Events" class="btn btn-info">אירועים ומפגשים</a>
-  
-              */
   render() {
     return (
       <div className="Home">

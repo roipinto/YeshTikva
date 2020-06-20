@@ -140,7 +140,7 @@ class App extends Component {
               {this.state.role === 'adm' ? (
                 <div>
                   <ToolbarUser title={this.uName}/>
-                  <Login />
+
                   <Route path="/MenuPage" component={MenuPageAdmin} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
                   <Route path="/EditEventsPage" component={EditEventsPage} />
@@ -172,7 +172,6 @@ class App extends Component {
               {this.state.role === 'vol' ? (
                 <div>
                   <ToolbarVol />
-                  <Login />
                   <Switch>
                   <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
                   <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
