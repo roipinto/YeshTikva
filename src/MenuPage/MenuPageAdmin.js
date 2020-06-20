@@ -5,6 +5,7 @@ import './MenuPage.css';
 
 
 class MenuPage extends Component {
+  
   render() {
     return (
 
@@ -26,8 +27,6 @@ class MenuPage extends Component {
           <a href="/CoordinatorDashboard" class="btn btn-outline-primary btn-ctrl-panel">לוח רכזים</a>
           <a href="VolunteerRequestDashboard" class="btn btn-outline-primary btn-ctrl-panel btttt">בקשות התנדבות</a>
         </section>
-
-
 
         <section id="boxes" class="py-3">
           <a href="Properties" class="btn btn-outline-primary btn-ctrl-panel">הגדרות</a>

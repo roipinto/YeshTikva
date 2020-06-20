@@ -7,7 +7,8 @@ import HomePage from './HomePage/HomePage.js';
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
-import MenuPage from './MenuPage/MenuPage';
+import MenuPageAdmin from './MenuPage/MenuPageAdmin';
+import MenuPageCoor from './MenuPage/MenuPageCoor';
 import Events from './Events/Events';
 import Information from './Information/Information';
 import ShiftDashboard from './Shift/ShiftDashboard';
@@ -25,6 +26,7 @@ import ContectUs from './ContectUs/ContectUs';
 import Properties from './Properties/Properties';
 import './App.css';
 import { Redirect } from 'react-router-dom'
+import Login from './Toolbar/Login';
 //import firebase from './Firebase/Firebase';
 
 const style = {
@@ -136,8 +138,9 @@ class App extends Component {
               {this.state.role === 'adm' ? (
                 <div>
                   <ToolbarUser />
+                  <Login/>
 
-                  <Route path="/MenuPage" component={MenuPage} />
+                  <Route path="/MenuPage" component={MenuPageAdmin} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
                   <Route path="/EditEventsPage" component={EditEventsPage} />
                   <Route path="/PatientDashboard" component={PatientDashboard} />
@@ -151,8 +154,9 @@ class App extends Component {
 
               {this.state.role === 'coor' ? (
                 <div>
-                  <ToolbarUser welcome="ברוך הבא 5"/>
-                  <Route path="/MenuPage" component={MenuPage} />
+                  <ToolbarUser/>
+                  
+                  <Route path="/MenuPage" component={MenuPageCoor} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
                   <Route path="/EditEventsPage" component={EditEventsPage} />
                   <Route path="/PatientDashboard" component={PatientDashboard} />
@@ -165,7 +169,8 @@ class App extends Component {
               ) : (<div></div>)}
               {this.state.role === 'vol' ? (
                 <div>
-                  <ToolbarVol welcome="ברוך הבא 6"/>
+                  <ToolbarVol/>
+                  <Login/>
                   <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
                   <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
                   <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>

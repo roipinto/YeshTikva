@@ -8,10 +8,41 @@ import firebase from '../Firebase/Firebase';
 import { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
+class toolbar extends Component {
+    constructor() {
+        super();
+        this.state = ({
+            user: null,
+        });
+        this.authListener = this.authListener.bind(this);
+        this.logout = this.logout.bind(this);
+    }
+    componentDidMount() {
+        this.authListener();
+    }
 
-
-
-const toolbar = (props) => (
+    authListener() {
+        firebase.auth().onAuthStateChanged((user) => {
+            console.log(user);
+            if (user) {
+                this.setState({ user });
+                localStorage.setItem('user', user.uid);
+            } else {
+                this.setState({ user: null });
+                localStorage.removeItem('user');
+            }
+        });
+    }
+    logout(e) {
+        e.preventDefault();
+        firebase.auth().signOut().then(()=>{
+            window.location.href ="../HomePage";
+        } );
+        window.location.reload();
+    }
+    
+    render() {
+        return (
     <div>
         <nav class="navbar navbar-expand-lg navbar-light" >
             <Link to=''>
@@ -54,7 +85,10 @@ const toolbar = (props) => (
 
         </nav>
     </div>
-);
+        );
+    }
+}
+
 
 
 
