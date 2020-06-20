@@ -9,13 +9,14 @@ import { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
 class toolbar extends Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = ({
             user: null,
         });
         this.authListener = this.authListener.bind(this);
         this.logout = this.logout.bind(this);
+        this.title = '';
     }
     componentDidMount() {
         this.authListener();
@@ -73,7 +74,7 @@ class toolbar extends Component {
                         <a href="/MenuPage" class="btn btn-outline-primary buttLink btnLogin">לוח בקרה למשתמש</a>
                     </li>
                     <li class="nav-item">
-                        <div class="btn btn-outline-secondary buttLink disabled btnLogin" data-toggle="modal" >ברוך הבא!</div>
+                        <div class="btn btn-outline-secondary buttLink disabled btnLogin" data-toggle="modal" >ברוך הבא {this.props.title} !</div>
                     </li>
                     <li class="nav-item">
                         <div class="btn btn-outline-danger buttLink" onClick={this.logout}>התנתק</div>

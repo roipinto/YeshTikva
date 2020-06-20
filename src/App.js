@@ -26,7 +26,9 @@ import Properties from './Properties/Properties';
 import './App.css';
 import { Redirect } from 'react-router-dom'
 import Login from './Toolbar/Login';
-import PageNotFound from './PageNotFound';
+//import PageNotFound from './PageNotFound';
+
+
 //import firebase from './Firebase/Firebase';
 
 const style = {
@@ -47,7 +49,7 @@ class App extends Component {
     this.logout = this.logout.bind(this);
     this.checkRole = this.checkRole.bind(this);
     this.funcs = this.funcs.bind(this);
-
+    this.uName = '';
   }
 
   componentDidMount() {
@@ -86,6 +88,7 @@ class App extends Component {
               }
               this.setState(state => {
                 state.role = retVal;
+                this.uName=coordinators[coordinator].name;
                 return state;
               });
               break;
@@ -130,16 +133,14 @@ class App extends Component {
   render() {
     return (
 
-
       <BrowserRouter>
         <div className="App">
           {this.state.loading ? (
             <div>
               {this.state.role === 'adm' ? (
                 <div>
-                  <ToolbarUser />
+                  <ToolbarUser title={this.uName}/>
                   <Login />
-
                   <Route path="/MenuPage" component={MenuPageAdmin} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
                   <Route path="/EditEventsPage" component={EditEventsPage} />
@@ -154,7 +155,7 @@ class App extends Component {
 
               {this.state.role === 'coor' ? (
                 <div>
-                  <ToolbarUser />
+                  <ToolbarUser title={this.uName}/>
                   <Switch>
                   <Route path="/MenuPage" component={MenuPageCoor} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
