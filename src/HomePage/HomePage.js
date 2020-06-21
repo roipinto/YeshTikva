@@ -1,11 +1,6 @@
-import React, { Component, useState } from 'react';
-import Picture1 from '../img/Picture1.jpg';
-import Picture2 from '../img/Picture2.jpg';
-import Picture3 from '../img/Picture3.jpg';
-import Picture4 from '../img/Picture4.jpg';
+import React, { Component} from 'react';
 import './HomePage.css';
 import MyTitle from '../Title';
-import Upload from '../Properties/Upload';
 import firebase from '../Firebase/Firebase';
 
 

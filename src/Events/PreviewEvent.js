@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import {Link} from 'react-router-dom';
-import axios from '../Firebase/axios';
+import React from 'react';
 import './Event.css';
 const event = (props) => (
    

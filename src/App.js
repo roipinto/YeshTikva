@@ -4,9 +4,7 @@ import firebase from './Firebase/Firebase';
 
 //import logo from './img/logo.jpg';
 import HomePage from './HomePage/HomePage.js';
-import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Link } from "react-router-dom";
 import MenuPageAdmin from './MenuPage/MenuPageAdmin';
 import MenuPageCoor from './MenuPage/MenuPageCoor';
 import Events from './Events/Events';
@@ -25,16 +23,6 @@ import ContectUs from './ContectUs/ContectUs';
 import Properties from './Properties/Properties';
 import './App.css';
 import { Redirect } from 'react-router-dom'
-import Login from './Toolbar/Login';
-//import PageNotFound from './PageNotFound';
-
-
-//import firebase from './Firebase/Firebase';
-
-const style = {
-  position: "relative",
-  margin: "50px auto"
-}
 
 
 class App extends Component {
@@ -53,7 +41,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.loading = this.funcs();
+    this.setState(state => {
+      state.loading = this.funcs();
+      return state;
+    });
   }
 
   funcs() {
@@ -70,7 +61,7 @@ class App extends Component {
 
   checkRole() {
     let retVal = null;
-    const myData = firebase.database().ref('coordinators').on('value', (snapshot) => {
+    firebase.database().ref('coordinators').on('value', (snapshot) => {
       let coordinators = snapshot.val();
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -96,8 +87,6 @@ class App extends Component {
           }
         }
         else {
-          const email = 'volunteer';
-
           this.setState(state => {
             state.role = 'vol';
             return state;

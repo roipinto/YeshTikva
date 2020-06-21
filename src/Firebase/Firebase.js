@@ -1,11 +1,4 @@
 import * as firebase from 'firebase'
-/*
-import firebase from 'firebase'
-import 'firebase/storage';
-import 'firebase/database';
-import 'firebase/auth';
-*/
-//import firebase from "@firebase/database";
 
 
 const firebaseConfig = {

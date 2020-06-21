@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../Firebase/axios';
 import Event from '../Events/Event';
-import Events from '../Events/Events';
 import MyTitle from '../Title';
 
 class EditEventsPage extends Component {
@@ -44,7 +43,7 @@ class EditEventsPage extends Component {
 
   deleteEventId = (id) => {
     const r = window.confirm("האם אתה בטוח?"); 
-    if (r == true) {
+    if (r === true) {
 
       axios.delete('/events/' + id + '.json').catch(error => console.log(error)).then(function (response) {
           alert('אירוע נמחק');

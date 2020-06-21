@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './Toolbar.css';
 import firebase from '../Firebase/Firebase';
-import { Redirect } from 'react-router-dom'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HomePage from '../HomePage/HomePage.js';
-import { connect } from "react-redux";
 
 
 class Login extends Component {
@@ -87,13 +82,13 @@ class Login extends Component {
                                             <p>את/ה יכול/ה לשחזר את סיסמתך</p>
                                             <div class="panel-body">
 
-                                                <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+                                                <form id="register-form"  autocomplete="off" class="form" method="post">
 
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
                                                             <input value={this.state.email} onChange={this.handleChange} type="email" name="email" class="form-control" id="forgetInput" aria-describedby="emailHelp" placeholder="הכנס אימייל" />
-
+                                                            
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   direction: rtl;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 
@@ -9,6 +11,3 @@
   background-color: steelblue;
   border-color: #8064A2;
 }
-
-
-

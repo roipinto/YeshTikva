@@ -3,7 +3,6 @@ import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../Firebase/axios';
 import emailjs from 'emailjs-com';
-import database from '../Firebase/Firebase';
 
 
 class VolunteerRequest extends Component {
@@ -53,17 +52,12 @@ class VolunteerRequest extends Component {
                     howSubmitted: volunteerRequests[volunteerRequest].howSubmitted,
 
 
-
                 });
-
             }
             this.setState({
                 volunteerRequests: newState
             });
-
-        }
-
-        );
+        });
     }
 
     handleSubmit(e) {
@@ -84,13 +78,6 @@ class VolunteerRequest extends Component {
 
 
     render() {
-
-
-        let templateParams = {
-            name: 'James',
-            notes: 'Check this out!'
-        };
-
 
 
         return (
@@ -142,9 +129,9 @@ class VolunteerRequest extends Component {
                             tooltip: 'Aprove All Selected Users',
                             icon: 'check',
                             onClick: (evt, data) => {
-                                if (window.confirm("האם אתה בטוח?") == true) {
+                                if (window.confirm("האם אתה בטוח?") === true) {
                                 data.forEach(data1 => {
-                                    axios.delete(`volunteerRequests/` + data1.id + '.json'),
+                                    axios.delete(`volunteerRequests/` + data1.id + '.json')
                                         axios.post('/volunteers.json', data1),                 
                                         emailjs.send('default_service', 'template_wWK10Alu', { from_name: data1.name, to_name: data1.email, subject: "hello", message_html: "hello hello" }, 'user_FDonzgo2Fb4KPMm3Ko062')
                                         .then(function (response) {
@@ -152,14 +139,6 @@ class VolunteerRequest extends Component {
                                         });
                                 })}
 
-
-
-                             //   axios.delete(`volunteerRequests/` + data[0].id + '.json'),
-                             //       axios.post('/volunteers.json', data[0]),
-                             //       emailjs.send('default_service', 'template_wWK10Alu', { from_name: data[0].name, to_name: "cchenmmichaeli@gmail.com", subject: "hello", message_html:"hello hello"} ,'user_FDonzgo2Fb4KPMm3Ko062')
-                              //      .then(function (response) {
-                             //           console.log("");
-                                   // });
                             }
 
 
@@ -175,11 +154,6 @@ class VolunteerRequest extends Component {
                             new Promise((resolve, reject) => {
                                 setTimeout(() => {
                                     {
-                                       // let data = this.state.data;
-                                      //  const index = data.indexOf(oldData);
-                                       // data.splice(index, 1);
-                                      //  this.setState({ data }, () => resolve());
-                                       // console.log(oldData.id);
                                         axios.delete(`volunteerRequests/` + oldData.id + '.json')
 
                                         emailjs.send('default_service', 'zisi', { from_name: "דחיית בקשת התנדבות", to_name: oldData.email, subject: "hello", message_html: "היי, קיבלנו את בקשת ההתנדבות שלך והחלטנו שלא להתקדם כרגע, מאחלים הרבה הצלחה בהמשך" }, 'user_FDonzgo2Fb4KPMm3Ko062')

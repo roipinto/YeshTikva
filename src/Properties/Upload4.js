@@ -1,5 +1,4 @@
 ﻿import React, { useState } from "react";
-import axios from '../Firebase/axios';
 import firebase from '../Firebase/Firebase';
 
 
@@ -61,17 +60,7 @@ const ReactFirebaseFileUpload4 = () => {
             }
         );
     };
-    const handleClick1 = () => {
-        var storageRef = firebase.storage().ref("images/");
-        storageRef.listAll().then(function (result) {
-            result.items.forEach(function (imageRef) {
-                // And finally display them
-                displayImage1(imageRef);
-            });
-        }).catch(function (error) {
-            // Handle any errors
-        });
-    };
+
     function displayImage1(imageRef) {
         imageRef.getDownloadURL().then(function (url) {
             console.log(imageRef.name);
@@ -122,7 +111,7 @@ const ReactFirebaseFileUpload4 = () => {
             <br />
 
             <br />
-            <img id="1" width="320" height="240" src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
+            <div id="1" width="320" height="240" src={url || "http://via.placeholder.com/300"} alt="firebase-image" />
 
 
         </div>

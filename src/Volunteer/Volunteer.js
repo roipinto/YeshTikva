@@ -2,7 +2,6 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../Firebase/axios';
-import database from '../Firebase/Firebase';
 
 
 class Volunteer extends Component {
@@ -138,7 +137,7 @@ class Volunteer extends Component {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
                             onClick: (evt, data) => {
-                                if (window.confirm("האם אתה בטוח?") == true) {
+                                if (window.confirm("האם אתה בטוח?") === true) {
                                 data.forEach(data1 => {
 
                                     axios.delete(`volunteers/` + data1.id + '.json')
@@ -178,7 +177,6 @@ class Volunteer extends Component {
                                             address: newData.address,
                                             phone: newData.phone,
 
-                                            age: newData.age,
                                             backround: newData.backround,
                                             sickness: newData.sickness,
                                             immunization: newData.immunization,

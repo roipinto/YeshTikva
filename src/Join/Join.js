@@ -1,10 +1,5 @@
 ﻿import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import axios from '../Firebase/axios';
-import VolunteerRequest from '../VolunteerRequest/VolunteerRequest';
 import emailjs from 'emailjs-com';
 //import firebase from '../Firebase/Firebase';
 import firebase from '../Firebase/Firebase';
@@ -95,15 +90,13 @@ class VolunteerRequestDashboard extends Component {
         axios.post('/volunteerRequests.json', volunteerRequest)
 
         const itemsRef = firebase.database().ref(`volunteerRequests/`);
-        //console.log(itemsRef)
         let x = 0;
         itemsRef.on("child_added", snap => {
             let products = [];
             products.push(snap.val());
             this.setState({ products });
             x = x + 1;
-            //console.log(x);
-            if (x == 50) {
+            if (x === 50) {
               
 
             emailjs.send('default_service', 'zisi', { from_name: "מעל 50 בקשות התנדבות ממתינות", to_name: "yeshtikva123@gmail.com", subject: "hello", message_html: "היי זיסי, ממתינים לך 50 בקשות התנדבות חדשות באתר", message_html2: "", message_html3: "", message_html4: ""  }, 'user_FDonzgo2Fb4KPMm3Ko062')

@@ -35,7 +35,7 @@ class Information extends Component {
           document.getElementById("demo").innerHTML = fetchedEvents[0].information;
         }
         this.setState({ loading: false, events: fetchedEvents });
-        const f = fetchedEvents[0].information;
+        fetchedEvents[0].information;
       })
       .catch(err => {
         this.setState({ loading: false });

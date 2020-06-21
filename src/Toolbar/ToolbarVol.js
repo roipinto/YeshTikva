@@ -3,10 +3,8 @@ import logo from '../img/logo.jpg';
 import { Link } from 'react-router-dom';
 import './Toolbar.css';
 import Login from './Login';
-import App from '../App'
 import firebase from '../Firebase/Firebase';
 import { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 
 class toolbar extends Component {
     constructor() {

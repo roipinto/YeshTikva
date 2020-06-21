@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../img/logo.jpg';
-import { Link } from 'react-router-dom';
 import axios from '../Firebase/axios';
-import Event from './Event';
 import PreviewEvent from './PreviewEvent';
 import './Event.css';
 import MyTitle from '../Title';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const title = (props) => (
     <div class="jumbotron-fluid py-1">

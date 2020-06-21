@@ -2,9 +2,7 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../Firebase/axios';
-import database from '../Firebase/Firebase';
 import emailjs from 'emailjs-com';
-import CoordinatorDashboard from '../Coordinator/CoordinatorDashboard';
 
 class Shifts extends Component {
 
@@ -95,7 +93,7 @@ class Shifts extends Component {
                         { title: "טלפון מתנדב", field: 'volunteer' },
                         { title: "בית חולים", field: 'hospital' },
                         { title: "הודעה למתנדב במייל", field: 'text' },
-                        { title: "שם הרכז האחרי", field: 'cordintorName'}
+                        { title: "שם הרכז האחרי", field: 'cordintorName' }
 
 
 
@@ -114,18 +112,13 @@ class Shifts extends Component {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
                             onClick: (evt, data) => {
-                                if (window.confirm("האם אתה בטוח?") == true) {
+                                if (window.confirm("האם אתה בטוח?") === true) {
                                     data.forEach(data1 => {
                                         axios.delete(`shifts/` + data1.id + '.json')
 
                                     })
                                 };
                             }
-
-
-
-                            //axios.delete(`shifts/` + data[0].id + '.json'),
-
                         },
                         {
                             icon: 'email',
@@ -138,10 +131,9 @@ class Shifts extends Component {
                                 var z = data[0].hospital;
                                 var k = data[0].text;
                                 var d = data[0].volunteername;
-                                var n = data[0].cordintorName;
 
 
-                                var ref = firebase.database().ref('volunteers/').orderByChild("phone").equalTo(data[0].volunteer)
+                                firebase.database().ref('volunteers/').orderByChild("phone").equalTo(data[0].volunteer)
                                     .on('value', snapshot => {
                                         snapshot.forEach(userSnapshot => {
                                             let data = userSnapshot.val();
@@ -157,7 +149,7 @@ class Shifts extends Component {
                                         });
                                     });
 
-                                var ref = firebase.database().ref('patients/').orderByChild("contact").equalTo(data[0].patient)
+                                firebase.database().ref('patients/').orderByChild("contact").equalTo(data[0].patient)
                                     .on('value', snapshot => {
                                         snapshot.forEach(userSnapshot => {
                                             let data = userSnapshot.val();
@@ -207,7 +199,7 @@ class Shifts extends Component {
                                             volunteername: newData.volunteername,
                                             volunteer: newData.volunteer,
                                             hospital: newData.hospital,
-                                            cordintorName :newData.cordintorName,
+                                            cordintorName: newData.cordintorName,
                                             text: newData.text
 
                                         }

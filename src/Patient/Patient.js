@@ -139,7 +139,7 @@ class Patient extends Component {
                             tooltip: 'Remove All Selected Users',
                             icon: 'delete',
                             onClick: (evt, data) => {
-                                if (window.confirm("האם אתה בטוח?") == true) {
+                                if (window.confirm("האם אתה בטוח?") === true) {
                                 data.forEach(data1 => {
                                     axios.delete(`patients/` + data1.id + '.json')
                                 })};
