@@ -52,9 +52,6 @@ class CoordinatorDashboard extends Component {
             .catch(err => {
                 this.setState({ loading: false });
             })
-
-            alert(this.generatePassword());
-
     }
 
 
