@@ -10,6 +10,7 @@ class CoordinatorDashboard extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.generatePassword = this.generatePassword.bind(this);
     }
 
     state = {
@@ -24,6 +25,16 @@ class CoordinatorDashboard extends Component {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+    }
+
+    generatePassword() {
+        var length = 8,
+            charset = "אבגדהוזחטיכלמםנןסעפףצץקרשתabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*",
+            retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return retVal;
     }
 
     componentDidMount() {
@@ -42,11 +53,16 @@ class CoordinatorDashboard extends Component {
                 this.setState({ loading: false });
             })
 
+            alert(this.generatePassword());
+
     }
+
+
 
     handleSubmit(e) {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+        var pass=this.state.email;
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.generatePassword()).then((u) => {
             const coordinator = {
                 coordinators: this.state.coordinator,
                 name: this.input.value,
@@ -59,13 +75,19 @@ class CoordinatorDashboard extends Component {
             axios.post('/coordinators.json', coordinator).then(function (response) {
                 window.location.reload();
             })
-        }).then((e) => {
-            alert(' נוצר רכז חדש ');
+        })
+        
+        .then((e) => {
+            firebase.auth().sendPasswordResetEmail(pass);
+            alert('נוצר רכז חדש ונשלח אליו מייל לשינוי סיסמא');
+        }).then(()=>{
+            firebase.auth().signOut();
         }).catch((error) => {
             alert("אחד או יותר מהנתונים אינו תקין");
         });
     }
 
+    
 
     render() {
         return (
@@ -85,9 +107,7 @@ class CoordinatorDashboard extends Component {
                                     <div class="form-group">
                                         <input required onChange={this.handleChange} class="form-control form-control-lg text-right" type="email" name="email" class="form-control" id="mailRegister" aria-describedby="emailHelp" placeholder="example@google.com " ref={(input3) => this.input3 = input3} />
                                     </div>
-                                    <div class="form-group">
-                                        <input required id="exampleInputPassword1" onChange={this.handleChange} type="password" name="password" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4} aria-describedby="emailHelp" placeholder="Password"></input>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>
                                     </div>
@@ -127,5 +147,3 @@ class CoordinatorDashboard extends Component {
 }
 
 export default CoordinatorDashboard;
-
-

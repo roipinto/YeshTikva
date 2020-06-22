@@ -2,7 +2,6 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../Firebase/axios';
-import * as admin from 'firebase-admin';
 
 class Coordinator extends Component {
 
@@ -90,12 +89,9 @@ class Coordinator extends Component {
                                 if (window.confirm("האם אתה בטוח?") === true) {
                                     data.forEach(data1 => {
                                         //must delete user from firebase  let userD=firebase.auth().getUser(data1.email).then(function (userD) {
-                                            admin.auth().getUser(data1.id);
-                                            
-                                            console.log("User delete");
-                                        
 
-
+                                        axios.delete(`coordinators/` + data1.id + '.json')
+                                        console.log("User delete");
 
                                     });
                                 }

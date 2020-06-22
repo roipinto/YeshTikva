@@ -21,7 +21,6 @@ class Login extends Component {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
             window.location.href = "../MenuPage";
-
         }).catch((error) => {
             alert("אחד מהשדות שהכנסת אינו תקין");
         });
@@ -94,10 +93,10 @@ class Login extends Component {
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input name="recover-submit" onClick={this.forgetPassword} class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit"></input>
+                                                <input name="recover-submit" onClick={this.forgetPassword} class="btn btn-lg btn-primary btn-block" value="אפס את סיסמתך" type="submit"></input>
                                             </div>
                                             <div class="form-group">
-                                                <input name="recover-submit" class="btn btn-lg btn-danger btn-block btn" value="Close Me" data-dismiss="modal"></input>
+                                                <input name="recover-submit" class="btn btn-lg btn-danger btn-block btn" value="סגור" data-dismiss="modal"></input>
                                             </div>
 
                                             <input type="hidden" class="hide" name="token" id="token" value=""></input>

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
 import firebase from './Firebase/Firebase';
-
-//import logo from './img/logo.jpg';
-import HomePage from './HomePage/HomePage.js';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
+
+import HomePage from './HomePage/HomePage.js';
 import MenuPageAdmin from './MenuPage/MenuPageAdmin';
 import MenuPageCoor from './MenuPage/MenuPageCoor';
 import Events from './Events/Events';
@@ -22,7 +21,6 @@ import InformationForVolunteer from './InformationForVolunteer/InformationForVol
 import ContectUs from './ContectUs/ContectUs';
 import Properties from './Properties/Properties';
 import './App.css';
-import { Redirect } from 'react-router-dom'
 
 
 class App extends Component {
@@ -111,7 +109,7 @@ class App extends Component {
   }
   logout() {
     firebase.auth().signOut();
-
+    alert("התנתקת!")
   }
 
   onDayClick = (e, day) => {
