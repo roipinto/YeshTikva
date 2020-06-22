@@ -204,7 +204,7 @@ class VolunteerRequestDashboard extends Component {
                                     <input type="tel" class="form-control form-control-lg text-right" required placeholder= "טלפון בפורמט הבא: 0523456789" pattern="[0-9]{10}" ref={(input8) => this.input8 = input8}></input>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control form-control-lg text-right" required required placeholder="גיל" ref={(input9) => this.input9 = input9}></input>
+                                        <input type="number" class="form-control form-control-lg text-right" required placeholder="גיל" ref={(input9) => this.input9 = input9}></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="רקע קצר עליך" ref={(input10) => this.input10 = input10}></input>
@@ -296,14 +296,7 @@ class VolunteerRequestDashboard extends Component {
                     </div>
 
 
-                </form>
-
-
-                <div>
-                    <h1></h1>
-                </div>
-
-                
+                </form>                
 
 
 

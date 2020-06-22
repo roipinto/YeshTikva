@@ -25,18 +25,7 @@ class CoordinatorDashboard extends Component {
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-/*
-    register(e) {
-        e.preventDefault();
-        auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-            console.log(u); alert("d\sucesss")
-        })
-            .catch((error) => {
-                alert("המייל או הסיסמא אינם תקינים");
-            })
-    }
 
-*/
     componentDidMount() {
         axios.get('/coordinators.json')
             .then(res => {
@@ -78,8 +67,6 @@ class CoordinatorDashboard extends Component {
     }
 
 
-
-
     render() {
         return (
             <div>
@@ -96,10 +83,10 @@ class CoordinatorDashboard extends Component {
 
                                 <form>
                                     <div class="form-group">
-                                        <input required value={this.state.email} onChange={this.handleChange} class="form-control form-control-lg text-right" type="email" name="email" class="form-control" id="mailRegister" aria-describedby="emailHelp" placeholder="example@google.com " ref={(input3) => this.input3 = input3} />
+                                        <input required onChange={this.handleChange} class="form-control form-control-lg text-right" type="email" name="email" class="form-control" id="mailRegister" aria-describedby="emailHelp" placeholder="example@google.com " ref={(input3) => this.input3 = input3} />
                                     </div>
                                     <div class="form-group">
-                                        <input required id="exampleInputPassword1" value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4} aria-describedby="emailHelp" placeholder="Password"></input>
+                                        <input required id="exampleInputPassword1" onChange={this.handleChange} type="password" name="password" class="form-control form-control-lg text-right" placeholder="הערות " ref={(input4) => this.input4 = input4} aria-describedby="emailHelp" placeholder="Password"></input>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg text-right" required placeholder="שם מלא" ref={(input) => this.input = input}></input>

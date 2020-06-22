@@ -93,7 +93,8 @@ class Shifts extends Component {
                         { title: "טלפון מתנדב", field: 'volunteer' },
                         { title: "בית חולים", field: 'hospital' },
                         { title: "הודעה למתנדב במייל", field: 'text' },
-                        { title: "שם הרכז האחרי", field: 'cordintorName' }
+                        { title: "מייל הרכז האחראי", field: 'cordintorName' }
+                        
 
 
 

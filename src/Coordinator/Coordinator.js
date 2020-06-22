@@ -2,7 +2,7 @@
 import firebase from '../Firebase/Firebase';
 import MaterialTable from 'material-table';
 import axios from '../Firebase/axios';
-
+import * as admin from 'firebase-admin';
 
 class Coordinator extends Component {
 
@@ -70,8 +70,8 @@ class Coordinator extends Component {
                         { title: "מייל", field: 'email' },
                         { title: "הערות", field: 'notes' },
                         { title: "הרשאות", field: 'role' }
-                        
-                       
+
+
 
                     ]}
 
@@ -88,17 +88,24 @@ class Coordinator extends Component {
                             icon: 'delete',
                             onClick: (evt, data) => {
                                 if (window.confirm("האם אתה בטוח?") === true) {
-                                data.forEach(data1 => {
-                                    axios.delete(`coordinators/` + data1.id + '.json')
+                                    data.forEach(data1 => {
+                                        //must delete user from firebase  let userD=firebase.auth().getUser(data1.email).then(function (userD) {
+                                            admin.auth().getUser(data1.id);
+                                            
+                                            console.log("User delete");
+                                        
 
-                                })};
-                            }
+
+
+                                    });
+                                }
 
 
                                 //axios.delete(`coordinators/` + data[0].id + '.json'),
 
 
 
+                            }
                         }
 
 
@@ -118,10 +125,10 @@ class Coordinator extends Component {
                                             email: newData.email,
                                             notes: newData.notes,
                                             role: newData.role
-                                            
+
                                         }
                                         axios.put(`coordinators/` + newData.id + '.json', coordinator)
-                                        
+
 
                                         /* const data = this.state.data;
                                         data.push(newData);

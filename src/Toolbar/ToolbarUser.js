@@ -13,7 +13,7 @@ class toolbar extends Component {
         });
         this.authListener = this.authListener.bind(this);
         this.logout = this.logout.bind(this);
-        this.title = '';
+        
     }
     componentDidMount() {
         this.authListener();
