@@ -111,7 +111,7 @@ class ShiftDashboard extends Component {
                                         <input type="text" class="form-control form-control-lg text-right" placeholder="בית חולים" required ref={(input5) => this.input5 = input5}></input>
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control form-control-lg text-right" placeholder="הודעת טקסט למייל" required ref={(input7) => this.input7 = input7}></textarea>
+                                        <textarea type="text" class="form-control form-control-lg text-right" placeholder="הערות" required ref={(input7) => this.input7 = input7}></textarea>
                                     </div>
 
 

@@ -66,18 +66,14 @@ class App extends Component {
           let email = user.email;
           for (let coordinator in coordinators) {
             if (coordinators[coordinator].email === email) {
-              if (coordinators[coordinator].role === 'admin') {
+              if (coordinators[coordinator].role === 'admin')
                 retVal = 'adm';
-              }
-              else if (coordinators[coordinator].role === 'coordinator') {
+              else if (coordinators[coordinator].role === 'coordinator')
                 retVal = 'coor';
-              }
-              else {
-                retVal = 'vol';
-              }
+
               this.setState(state => {
                 state.role = retVal;
-                this.uName=coordinators[coordinator].name;
+                this.uName = coordinators[coordinator].name;
                 return state;
               });
               break;
@@ -126,7 +122,7 @@ class App extends Component {
             <div>
               {this.state.role === 'adm' ? (
                 <div>
-                  <ToolbarUser title={this.uName}/>
+                  <ToolbarUser title={this.uName} />
 
                   <Route path="/MenuPage" component={MenuPageAdmin} />
                   <Route path="/ShiftDashboard" component={ShiftDashboard} />
@@ -142,39 +138,43 @@ class App extends Component {
 
               {this.state.role === 'coor' ? (
                 <div>
-                  <ToolbarUser title={this.uName}/>
+                  <ToolbarUser title={this.uName} />
                   <Switch>
-                  <Route path="/MenuPage" component={MenuPageCoor} />
-                  <Route path="/ShiftDashboard" component={ShiftDashboard} />
-                  <Route path="/EditEventsPage" component={EditEventsPage} />
-                  <Route path="/PatientDashboard" component={PatientDashboard} />
-                  <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
+                    <Route path="/MenuPage" component={MenuPageCoor} />
+                    <Route path="/ShiftDashboard" component={ShiftDashboard} />
+                    <Route path="/EditEventsPage" component={EditEventsPage} />
+                    <Route path="/PatientDashboard" component={PatientDashboard} />
+                    <Route path="/VolunteerDashboard" component={VolunteerDashboard} />
 
-                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
                   </Switch>
-                  </div>
+                </div>
               ) : (<div></div>)}
               {this.state.role === 'vol' ? (
                 <div>
+
                   <ToolbarVol />
                   <Switch>
-                  <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/PatientDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/MenuPage"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/ShiftDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/EditEventsPage"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/PatientDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/VolunteerDashboard"><Redirect to="/HomePage" /></Route>
 
-                  <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
-                  <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/Properties"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/CoordinatorDashboard"><Redirect to="/HomePage" /></Route>
+                    <Route exact path="/VolunteerRequestDashboard"><Redirect to="/HomePage" /></Route>
                   </Switch>
                 </div>
               ) : (<div></div>)}
 
+              {this.state.role === null ? (
+                <div><ToolbarVol /></div>
+              ) : (<div></div>)}
+              
               <Route exact path="/"><Redirect to="/HomePage" /></Route>
-
               <Switch>
                 <Route path="/HomePage" component={HomePage} />
                 <Route path=" " component={HomePage} />

@@ -92,7 +92,7 @@ class Shifts extends Component {
                         { title: "מתנדב", field: 'volunteername' },
                         { title: "טלפון מתנדב", field: 'volunteer' },
                         { title: "בית חולים", field: 'hospital' },
-                        { title: "הודעה למתנדב במייל", field: 'text' },
+                        { title: "הערות", field: 'text' },
                         { title: "מייל הרכז האחראי", field: 'cordintorName' }
                         
 
@@ -130,8 +130,28 @@ class Shifts extends Component {
                                 var y = data[0].endtime;
                                 var t = data[0].patientname;
                                 var z = data[0].hospital;
-                                var k = data[0].text;
+                                //var k = data[0].text;
                                 var d = data[0].volunteername;
+                                var k;
+
+
+
+                                firebase.database().ref('patients/').orderByChild("contact").equalTo(data[0].patient)
+                                    .on('value', snapshot => {
+                                        snapshot.forEach(userSnapshot => {
+                                            let dataP = userSnapshot.val();
+                                           // console.log('data: ', data);
+                                           // console.log(data.contactemail);
+                                            alert("אמייל נשלח למשפחה");
+                                            k = dataP.notes;
+
+                                            emailjs.send('default_service', 'zisi', { from_name: "שובצה התנדבות", to_name: dataP.contactemail, subject: "hello", message_html: "שלום,", message_html2: "שובצה התנדבות בין השעות: " + x + "-" + y, message_html3: "שם המתנדב: " + d }, 'user_FDonzgo2Fb4KPMm3Ko062')
+                                                .then(function (response) {
+                                                    console.log("");
+                                                });
+                                        });
+                                    });
+
 
 
                                 firebase.database().ref('volunteers/').orderByChild("phone").equalTo(data[0].volunteer)
@@ -142,6 +162,9 @@ class Shifts extends Component {
                                             console.log("hi");
                                             console.log(data.email);
 
+
+
+
                                             alert("אמייל נשלח למתנדב");
                                             emailjs.send('default_service', 'zisi', { from_name: "שובצת להתנדבות", to_name: data.email, subject: "hello", message_html: "שלום,", message_html2: "שובצת להתנדבות בין השעות: " + x + "-" + y, message_html3: "בבית חולים: " + z, message_html4: "עבור מטופל: " + t, message_html5: k }, 'user_FDonzgo2Fb4KPMm3Ko062')
                                                 .then(function (response) {
@@ -150,20 +173,6 @@ class Shifts extends Component {
                                         });
                                     });
 
-                                firebase.database().ref('patients/').orderByChild("contact").equalTo(data[0].patient)
-                                    .on('value', snapshot => {
-                                        snapshot.forEach(userSnapshot => {
-                                            let data = userSnapshot.val();
-                                            console.log('data: ', data);
-                                            console.log(data.contactemail);
-                                            alert("אמייל נשלח למשפחה");
-
-                                            emailjs.send('default_service', 'zisi', { from_name: "שובצה התנדבות", to_name: data.contactemail, subject: "hello", message_html: "שלום,", message_html2: "שובצה התנדבות בין השעות: " + x + "-" + y, message_html3: "שם המתנדב: " + d }, 'user_FDonzgo2Fb4KPMm3Ko062')
-                                                .then(function (response) {
-                                                    console.log("");
-                                                });
-                                        });
-                                    });
 
 
 

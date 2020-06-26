@@ -235,12 +235,12 @@ class VolunteerRequestDashboard extends Component {
 
                                     <select class="custom-select" ref={(input14) => this.input14 = input14} >
                                         <option selected required>איזה איזור הכי רלוונטי עבורך להתנדבות?</option>
-                                        <option value="Facebook">מרכז (תל השומר, בילינסון, מעיני הישועה, איכילוב וכו')</option>
-                                        <option value="WhatsApp">ירושלים (שערי צדק, אלי"ן, עין כרם, הר הצופים וכו')</option>
-                                        <option value="WhatsApp">צפון (רמב"ם, זיו, העמק, פוריה וכו')</option>
-                                        <option value="WhatsApp">דרום (סורוקה, ברזילי, אסותא אשדוד וכו')</option>
-                                        <option value="WhatsApp">אזור השרון (מאיר, לניאדו, בית לוינשטיין וכו')</option>
-                                        <option value="WhatsApp">איזור השפלה (קפלן, אסף הרופא וכו')</option>
+                                        <option value="מרכז (תל השומר, בילינסון, מעיני הישועה, איכילוב וכו')">מרכז (תל השומר, בילינסון, מעיני הישועה, איכילוב וכו')</option>
+                                        <option value="ירושלים (שערי צדק, אלי'ן, עין כרם, הר הצופים וכו')">ירושלים (שערי צדק, אלי'ן, עין כרם, הר הצופים וכו')</option>
+                                        <option value="צפון (רמב'ם, זיו, העמק, פוריה וכו')">צפון (רמב'ם, זיו, העמק, פוריה וכו')</option>
+                                        <option value="דרום (סורוקה, ברזילי, אסותא אשדוד וכו')">דרום (סורוקה, ברזילי, אסותא אשדוד וכו')</option>
+                                        <option value="אזור השרון (מאיר, לניאדו, בית לוינשטיין וכו')">אזור השרון (מאיר, לניאדו, בית לוינשטיין וכו')</option>
+                                        <option value="איזור השפלה (קפלן, אסף הרופא וכו')">איזור השפלה (קפלן, אסף הרופא וכו')</option>
                                     </select>
                            
                                     </div>                            
