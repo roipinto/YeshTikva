@@ -46,15 +46,10 @@ class App extends Component {
   }
 
   funcs() {
-    let a = this.authListener();
-    let b = this.checkRole();
-    if (a === b && a === 'true') {
-      this.setState(state => {
-        state.loading = true;
-        return state;
-      });
-    }
-    return 'true';
+    this.authListener();
+    this.checkRole();
+    
+    return true;
   }
 
   checkRole() {
@@ -86,7 +81,7 @@ class App extends Component {
             return state;
           });
         }
-        return 'true';
+        return true;
       });
     });
   }
@@ -102,6 +97,7 @@ class App extends Component {
         localStorage.removeItem('user');
       }
     });
+    return true;
   }
   logout() {
     firebase.auth().signOut();

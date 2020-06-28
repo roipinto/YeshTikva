@@ -4,6 +4,7 @@ import Shifts from './Shifts';
 import MyTitle from '../Title';
 import firebase from '../Firebase/Firebase';
 
+import SecondaryTitle from '../SecondaryTitle';
 
 class ShiftDashboard extends Component {
     constructor(props) {
@@ -72,6 +73,8 @@ class ShiftDashboard extends Component {
         return (
             <div>
                 <MyTitle title="לוח משמרות" />
+
+                <SecondaryTitle title="לצפיה במשמרות גלול מטה"></SecondaryTitle>
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 

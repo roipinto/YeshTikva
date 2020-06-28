@@ -3,6 +3,8 @@ import axios from '../Firebase/axios';
 import Patient from './Patient';
 import MyTitle from '../Title';
 
+import SecondaryTitle from '../SecondaryTitle';
+
 class PatientDashboard extends Component {
     constructor(props) {
         super(props);
@@ -92,6 +94,7 @@ class PatientDashboard extends Component {
         return (
             <div>
                 <MyTitle title="לוח מטופלים" />
+                <SecondaryTitle title="לצפיה במטופלים גלול מטה"></SecondaryTitle>
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
                     

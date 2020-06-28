@@ -4,6 +4,8 @@ import Coordinator from './Coordinator';
 import MyTitle from '../Title';
 import firebase from '../Firebase/Firebase';
 
+import SecondaryTitle from '../SecondaryTitle';
+
 class CoordinatorDashboard extends Component {
 
     constructor(props) {
@@ -91,6 +93,7 @@ class CoordinatorDashboard extends Component {
             <div>
 
                 <MyTitle title="לוח רכזים" />
+                <SecondaryTitle title="לצפיה ברכזים גלול מטה"></SecondaryTitle>
 
                 <form onSubmit={this.handleSubmit} class="row justify-content-md-center">
 
