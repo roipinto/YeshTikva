@@ -102,7 +102,6 @@ class CoordinatorDashboard extends Component {
                         <div class="Card bg-white text-center card-form">
                             <div class="card-body">
 
-
                                 <form>
                                     <div class="form-group">
                                         <input required onChange={this.handleChange} class="form-control form-control-lg text-right" type="email" name="email" class="form-control" id="mailRegister" aria-describedby="emailHelp" placeholder="example@google.com " ref={(input3) => this.input3 = input3} />
